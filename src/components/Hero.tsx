@@ -85,6 +85,19 @@ const Hero = () => {
                   />
                 </div>
 
+                {/* Available Badge - Below Photo */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-6 flex justify-center"
+                >
+                  <div className="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg">
+                    <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                    Available for opportunities
+                  </div>
+                </motion.div>
+
                 {/* Animated Chart Overlay */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
@@ -137,17 +150,6 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            {/* Greeting Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-2 bg-primary-500 text-white px-4 py-2 rounded-full text-sm font-medium"
-            >
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              Available for opportunities
-            </motion.div>
-
             {/* Name */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
