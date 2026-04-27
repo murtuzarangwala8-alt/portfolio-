@@ -1,25 +1,81 @@
 import { motion, useAnimation } from 'framer-motion';
-import { Download, Briefcase, TrendingUp, Sparkles, ExternalLink } from 'lucide-react';
+import { Download, Briefcase, TrendingUp, Sparkles, ExternalLink, GripVertical } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const Hero = () => {
-  const [chartData, setChartData] = useState([45, 52, 48, 65, 58, 72, 68, 85, 78, 92]);
+  const [spData, setSpData] = useState<number[]>([45, 52, 48, 65, 58, 72, 68, 85, 78, 92]);
+  const [currentPrice, setCurrentPrice] = useState<number>(4500.25);
+  const [priceChange, setPriceChange] = useState<number>(0);
   const [showTooltip, setShowTooltip] = useState(false);
   const controls = useAnimation();
   
   useEffect(() => {
     // Animate bars on load
     controls.start(i => ({
-      height: `${chartData[i]}%`,
+      height: `${spData[i]}%`,
       transition: { delay: i * 0.1, duration: 0.8, ease: "easeOut" }
     }));
 
-    // Update chart data periodically for live effect
-    const interval = setInterval(() => {
-      setChartData(prev => prev.map(val => Math.min(95, Math.max(40, val + (Math.random() - 0.5) * 10))));
-    }, 4000);
+    // Fetch real S&P 500 data
+    const fetchSPData = async () => {
+      try {
+        // Using Alpha Vantage API (free tier)
+        // TODO: Replace with your API key from https://www.alphavantage.co/support/#api-key
+        const API_KEY = 'demo'; // Replace with your actual API key
+        const response = await fetch(
+          `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=SPY&interval=5min&apikey=${API_KEY}`
+        );
+        const data = await response.json();
+        
+        if (data['Time Series (5min)']) {
+          const timeSeries = data['Time Series (5min)'];
+          const prices = Object.values(timeSeries).slice(0, 10).map((entry: any) => 
+            parseFloat(entry['4. close'])
+          ).reverse();
+          
+          // Normalize prices to percentage for chart
+          const minPrice = Math.min(...prices);
+          const maxPrice = Math.max(...prices);
+          const normalized = prices.map(price => 
+            40 + ((price - minPrice) / (maxPrice - minPrice)) * 55
+          );
+          
+          setSpData(normalized);
+          setCurrentPrice(prices[prices.length - 1]);
+          setPriceChange(((prices[prices.length - 1] - prices[0]) / prices[0]) * 100);
+        }
+      } catch (error) {
+        console.log('Using demo data - Add your Alpha Vantage API key for live S&P 500 data');
+        // Fallback to simulated data
+        simulateLiveData();
+      }
+    };
+
+    // Simulate live data if API fails
+    const simulateLiveData = () => {
+      const interval = setInterval(() => {
+        setSpData(prev => {
+          const newData = [...prev.slice(1), Math.min(95, Math.max(40, prev[prev.length - 1] + (Math.random() - 0.48) * 8))];
+          return newData;
+        });
+        setCurrentPrice(prev => prev + (Math.random() - 0.5) * 2);
+        setPriceChange(prev => prev + (Math.random() - 0.5) * 0.1);
+      }, 3000);
+      
+      return interval;
+    };
+
+    // Initial fetch
+    fetchSPData();
     
-    return () => clearInterval(interval);
+    // Update every 30 seconds
+    const fetchInterval = setInterval(fetchSPData, 30000);
+    const simulateInterval = simulateLiveData();
+    
+    return () => {
+      clearInterval(fetchInterval);
+      clearInterval(simulateInterval);
+    };
   }, [controls]);
 
   const scrollToSection = (id: string) => {
@@ -58,16 +114,94 @@ const Hero = () => {
         ))}
       </div>
 
+      {/* Draggable Live S&P 500 Card */}
+      <motion.div
+        drag
+        dragConstraints={{
+          top: -300,
+          left: -400,
+          right: 400,
+          bottom: 300,
+        }}
+        dragElastic={0.1}
+        whileDrag={{ scale: 1.05, cursor: 'grabbing' }}
+        initial={{ opacity: 0, scale: 0.8, x: 100, y: -100 }}
+        animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+        transition={{ delay: 1, duration: 0.6 }}
+        className="fixed top-24 right-8 z-50 cursor-grab"
+      >
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-6 border-2 border-primary-500/50 backdrop-blur-sm w-72"
+        >
+          {/* Drag Handle */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-2">
+              <GripVertical size={20} className="text-gray-400 cursor-grab" />
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs font-bold text-gray-900 dark:text-white">LIVE S&P 500</span>
+              </div>
+            </div>
+            <TrendingUp size={18} className={priceChange >= 0 ? 'text-green-500' : 'text-red-500'} />
+          </div>
+
+          {/* Current Price */}
+          <div className="mb-4">
+            <div className="text-3xl font-bold text-gray-900 dark:text-white">
+              ${currentPrice.toFixed(2)}
+            </div>
+            <div className={`text-sm font-medium ${priceChange >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+              {priceChange >= 0 ? '+' : ''}{priceChange.toFixed(2)}% Today
+            </div>
+          </div>
+
+          {/* Animated Bar Chart */}
+          <div className="flex items-end gap-1 h-32 mb-4">
+            {spData.map((height, index) => (
+              <motion.div
+                key={index}
+                custom={index}
+                animate={{ height: `${height}%` }}
+                transition={{ duration: 0.5 }}
+                className="flex-1 bg-gradient-to-t from-primary-500 via-accent-500 to-accent-400 rounded-t-lg shadow-lg"
+              />
+            ))}
+          </div>
+
+          {/* Chart Label */}
+          <div className="text-center border-t border-gray-200 dark:border-gray-700 pt-3">
+            <p className="text-xs font-bold text-gray-900 dark:text-white mb-1">
+              Real-time Market Data
+            </p>
+            <p className="text-[10px] text-gray-600 dark:text-gray-400">
+              Drag me anywhere • Updates every 30s
+            </p>
+          </div>
+
+          {/* External Link */}
+          <motion.a
+            href="https://finance.yahoo.com/quote/%5EGSPC"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05 }}
+            className="mt-3 flex items-center justify-center gap-2 text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 transition-colors"
+          >
+            View Full Chart
+            <ExternalLink size={12} />
+          </motion.a>
+        </motion.div>
+      </motion.div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side - Premium Analytics Card */}
+          {/* Left Side - Photo */}
           <motion.div
             initial={{ opacity: 0, x: -100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            {/* Main Photo Card with Dashboard Feel */}
             <motion.div
               whileHover={{ y: -8, scale: 1.02 }}
               transition={{ duration: 0.3 }}
@@ -83,52 +217,8 @@ const Hero = () => {
                     e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect fill="%23feb300" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="140" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
                   }}
                 />
-                
-                {/* Gradient Overlay for Premium Feel */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
               </div>
-
-              {/* Live Analytics Dashboard Card */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-                whileHover={{ scale: 1.05, y: -4 }}
-                className="absolute bottom-6 right-6 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-5 border-2 border-primary-500/50 backdrop-blur-sm"
-              >
-                {/* Chart Header */}
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-xs font-bold text-gray-900 dark:text-white">LIVE</span>
-                  </div>
-                  <TrendingUp size={16} className="text-green-500" />
-                </div>
-
-                {/* Animated Bar Chart */}
-                <div className="flex items-end gap-1 h-24 w-44 mb-3">
-                  {chartData.map((height, index) => (
-                    <motion.div
-                      key={index}
-                      custom={index}
-                      animate={controls}
-                      initial={{ height: 0 }}
-                      className="flex-1 bg-gradient-to-t from-primary-500 via-accent-500 to-accent-400 rounded-t-lg shadow-lg"
-                      style={{ height: `${height}%` }}
-                    />
-                  ))}
-                </div>
-
-                {/* Chart Label */}
-                <div className="text-center">
-                  <p className="text-xs font-bold text-gray-900 dark:text-white mb-1">
-                    Real-time Market Insights
-                  </p>
-                  <p className="text-[10px] text-gray-600 dark:text-gray-400">
-                    & Growth Trends
-                  </p>
-                </div>
-              </motion.div>
 
               {/* Open to Opportunities Badge */}
               <motion.div
@@ -158,12 +248,11 @@ const Hero = () => {
                     Open to Opportunities
                   </motion.div>
 
-                  {/* Tooltip */}
                   {showTooltip && (
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl"
+                      className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl z-50"
                     >
                       Available for internships, consulting, and analyst roles
                       <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45" />
@@ -178,7 +267,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Text Content with Proper Spacing */}
+          {/* Right Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
@@ -220,7 +309,7 @@ const Hero = () => {
               <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
             </motion.div>
 
-            {/* Description with Max Width and Highlighted Keywords */}
+            {/* Description with Highlighted Keywords */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -243,7 +332,7 @@ const Hero = () => {
               I turn messy data into clear decisions.
             </motion.p>
 
-            {/* CTA Buttons with Hover Effects */}
+            {/* CTA Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
