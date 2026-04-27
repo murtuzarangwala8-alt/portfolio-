@@ -90,9 +90,9 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="mt-6 flex justify-center"
+                  className="absolute -bottom-4 left-1/2 transform -translate-x-1/2"
                 >
-                  <div className="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-medium shadow-lg">
+                  <div className="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-full text-sm font-medium shadow-xl border-2 border-white dark:border-gray-900">
                     <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
                     Available for opportunities
                   </div>
