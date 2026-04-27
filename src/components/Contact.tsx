@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Mail, Link as LinkedinIcon, Globe, MapPin, Send } from 'lucide-react';
+import { Mail, Link as LinkedinIcon, Globe, MapPin, Send, MessageCircle, Code as GithubIcon } from 'lucide-react';
 
 const Contact = () => {
   const ref = useRef(null);
@@ -89,6 +89,27 @@ const Contact = () => {
     }
   ];
 
+  const socialLinks = [
+    {
+      icon: <MessageCircle className="w-6 h-6" />,
+      label: "WhatsApp",
+      href: "https://wa.me/YOUR_PHONE_NUMBER", // TODO: Replace with your WhatsApp number (format: https://wa.me/1234567890)
+      color: "from-green-500 to-green-600"
+    },
+    {
+      icon: <LinkedinIcon className="w-6 h-6" />,
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/murtaza-rangwala-856456102",
+      color: "from-blue-600 to-blue-700"
+    },
+    {
+      icon: <GithubIcon className="w-6 h-6" />,
+      label: "GitHub",
+      href: "https://github.com/YOUR_GITHUB_USERNAME", // TODO: Replace with your GitHub username
+      color: "from-gray-700 to-gray-900"
+    }
+  ];
+
   return (
     <section id="contact" className="section-container">
       <div className="max-w-7xl mx-auto" ref={ref}>
@@ -165,6 +186,37 @@ const Contact = () => {
                 <p className="text-sm text-gray-600 dark:text-gray-400">
                   Open to remote opportunities worldwide
                 </p>
+              </div>
+            </motion.div>
+
+            {/* Social Media Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="glass-card p-8"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Connect With Me
+              </h3>
+              <div className="flex flex-wrap gap-4">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ duration: 0.4, delay: 0.9 + index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`flex-1 min-w-[150px] bg-gradient-to-r ${social.color} text-white rounded-xl p-4 flex items-center justify-center gap-3 hover:shadow-xl transition-all`}
+                  >
+                    {social.icon}
+                    <span className="font-bold">{social.label}</span>
+                  </motion.a>
+                ))}
               </div>
             </motion.div>
           </motion.div>
