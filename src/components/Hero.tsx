@@ -8,26 +8,34 @@ const Hero = () => {
   
   useEffect(() => {
     if (showWidget) {
-      // Load TradingView widget script
-      const script = document.createElement('script');
-      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
-      script.async = true;
-      script.innerHTML = JSON.stringify({
-        "symbol": "SP:SPX",
-        "width": "100%",
-        "height": "100%",
-        "locale": "en",
-        "dateRange": "1D",
-        "colorTheme": "dark",
-        "isTransparent": false,
-        "autosize": true,
-        "largeChartUrl": "https://www.tradingview.com/symbols/SPX/"
-      });
-
+      // Clear any existing content
       const container = document.getElementById('tradingview-widget-container');
       if (container) {
         container.innerHTML = '';
-        container.appendChild(script);
+        
+        // Create widget wrapper
+        const widgetDiv = document.createElement('div');
+        widgetDiv.className = 'tradingview-widget-container__widget';
+        container.appendChild(widgetDiv);
+        
+        // Load TradingView widget script
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+        script.async = true;
+        script.innerHTML = JSON.stringify({
+          "symbol": "OANDA:SPX500USD",
+          "width": "100%",
+          "height": "100%",
+          "locale": "en",
+          "dateRange": "1D",
+          "colorTheme": "dark",
+          "isTransparent": false,
+          "autosize": true,
+          "largeChartUrl": ""
+        });
+        
+        widgetDiv.appendChild(script);
       }
     }
   }, [showWidget]);
@@ -128,10 +136,10 @@ const Hero = () => {
       >
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="w-[350px] bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-primary-500/30"
+          className="w-[350px] bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
         >
           {/* Header with Close Button */}
-          <div className="px-4 py-3 flex items-center justify-between border-b border-gray-700/50 bg-gray-800/50">
+          <div className="px-4 py-2 flex items-center justify-between bg-gray-900">
             <div className="flex items-center gap-2">
               <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               <span className="text-sm font-bold text-white/90">S&P 500 Live</span>
@@ -146,30 +154,36 @@ const Hero = () => {
             </motion.button>
           </div>
 
-          {/* TradingView Widget Container */}
-          <div className="relative" style={{ height: '220px' }}>
+          {/* TradingView Widget Container - Compact */}
+          <div className="relative bg-gray-900" style={{ height: '180px', overflow: 'hidden' }}>
             <div 
               id="tradingview-widget-container"
-              className="tradingview-widget-container"
-              style={{ height: '100%', width: '100%' }}
+              className="tradingview-widget-container w-full h-full"
+              style={{ 
+                border: 'none', 
+                margin: 0, 
+                padding: 0,
+                transform: 'scale(1.1)',
+                transformOrigin: 'center center'
+              }}
             />
           </div>
 
-          {/* Footer */}
-          <div className="px-4 py-2 bg-gray-800/50 border-t border-gray-700/30">
+          {/* Footer - Minimal */}
+          <div className="px-4 py-1.5 bg-gray-900">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] text-white/40">
-                Data by TradingView • May be delayed
+              <span className="text-[9px] text-white/30">
+                Data by TradingView
               </span>
               <motion.a
-                href="https://www.tradingview.com/symbols/SPX/"
+                href="https://www.tradingview.com/symbols/SPX500USD/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-1 text-[10px] text-primary-400 hover:text-primary-300 transition-colors"
+                className="flex items-center gap-1 text-[9px] text-primary-400 hover:text-primary-300 transition-colors"
               >
                 Full Chart
-                <ExternalLink size={10} />
+                <ExternalLink size={9} />
               </motion.a>
             </div>
           </div>

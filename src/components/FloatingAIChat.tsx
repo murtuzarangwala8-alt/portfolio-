@@ -13,7 +13,7 @@ const FloatingAIChat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: "Hi! I'm Murtuza's AI assistant. Ask me about his skills, projects, or experience!",
+      content: "Hi! I'm Murtuza's Trading AI Assistant. Ask me about markets, trading strategies, technical analysis, or his finance projects!",
       timestamp: new Date()
     }
   ]);
@@ -28,27 +28,53 @@ const FloatingAIChat = () => {
   const getMockResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase();
     
-    if (lowerMessage.includes('skill') || lowerMessage.includes('expertise')) {
-      return "Murtuza specializes in Data Analytics (Python, R, SQL), Quantitative Finance (Econometrics, Time-Series), AI/ML (Machine Learning, LLMs, RAG), and Business Strategy.";
+    // Trading & Market Analysis
+    if (lowerMessage.includes('gold') || lowerMessage.includes('xau')) {
+      return "Murtuza built an XAU/USD Markov Chain Predictor using first-order Markov models to forecast gold price movements. It analyzes historical patterns and predicts next state (Up/Down/Neutral) with transition probabilities.";
     }
     
+    if (lowerMessage.includes('trading') || lowerMessage.includes('strategy')) {
+      return "His trading expertise includes quantitative strategies, time-series forecasting, Markov Chain models, and technical analysis. He worked as an Equity Dealer at Motilal Oswal, executing trades and analyzing market trends.";
+    }
+    
+    if (lowerMessage.includes('technical') || lowerMessage.includes('indicator')) {
+      return "He uses technical indicators like moving averages, RSI, MACD, and Bollinger Bands. His projects incorporate statistical models (ARIMA, GARCH) and machine learning for price prediction.";
+    }
+    
+    if (lowerMessage.includes('risk') || lowerMessage.includes('portfolio')) {
+      return "Murtuza specializes in risk management, portfolio optimization, and quantitative finance. His MSc thesis analyzed household financial market participation using econometric models and risk assessment frameworks.";
+    }
+    
+    if (lowerMessage.includes('market') || lowerMessage.includes('stock') || lowerMessage.includes('equity')) {
+      return "He has hands-on experience in equity markets, having worked as an Equity Dealer. His analysis covers market microstructure, price discovery, volatility modeling, and behavioral finance patterns.";
+    }
+    
+    if (lowerMessage.includes('python') || lowerMessage.includes('code')) {
+      return "He codes trading algorithms in Python using pandas, numpy, scikit-learn, and statsmodels. His projects include API integration (GoldAPI, TwelveData), data preprocessing, and real-time market data analysis.";
+    }
+    
+    if (lowerMessage.includes('ai') || lowerMessage.includes('machine learning') || lowerMessage.includes('ml')) {
+      return "He applies ML to finance: predictive models for price forecasting, NLP for sentiment analysis, RAG systems for financial knowledge retrieval, and LLMs for market insights. Check out his RAG-based Financial Knowledge Assistant!";
+    }
+    
+    if (lowerMessage.includes('data') || lowerMessage.includes('analytics')) {
+      return "Expert in financial data analytics using Python, R, SQL. Skills include time-series analysis, econometrics, statistical modeling, data visualization, and building ETL pipelines for market data.";
+    }
+    
+    // Career & Background
     if (lowerMessage.includes('experience') || lowerMessage.includes('work')) {
-      return "Murtuza has worked as a Business Analyst at Dimitra International, Operations & Business Analyst at Mohamedally Akbarally & Co., and Equity Dealer at Motilal Oswal.";
-    }
-    
-    if (lowerMessage.includes('education') || lowerMessage.includes('study')) {
-      return "He holds an MSc in Economics & Data Analysis from University of Verona, Italy, and a BSc in Computer Science from University of Mumbai, India.";
+      return "Business Analyst at Dimitra International (Berlin), Operations Analyst at Mohamedally Akbarally & Co. (Mumbai), and Equity Dealer at Motilal Oswal. Strong background in finance, trading, and data-driven decision making.";
     }
     
     if (lowerMessage.includes('project')) {
-      return "Notable projects include Household Financial Market Participation Analysis, RAG-based Financial Knowledge Assistant, and XAU/USD Markov Chain Predictor.";
+      return "Key projects: XAU/USD Markov Chain Predictor, RAG-based Financial Knowledge Assistant, Household Financial Market Participation Analysis, and various quantitative trading models.";
     }
     
-    if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
-      return "You can reach Murtuza at murtuzarangwala8@gmail.com or on LinkedIn at linkedin.com/in/murtaza-rangwala-856456102";
+    if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('hire')) {
+      return "📧 murtuzarangwala8@gmail.com | 💼 LinkedIn: linkedin.com/in/murtaza-rangwala-856456102 | Available for opportunities in Quantitative Finance, Trading, and Data Analytics!";
     }
     
-    return "I can tell you about Murtuza's skills, experience, education, projects, or how to contact him. What would you like to know?";
+    return "I can discuss trading strategies, market analysis, technical indicators, risk management, ML in finance, or Murtuza's projects. What interests you?";
   };
 
   const sendMessage = async (userMessage: string) => {
@@ -105,8 +131,8 @@ const FloatingAIChat = () => {
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary-500 to-accent-500 p-4 text-white">
-              <h3 className="font-bold text-lg">AI Assistant</h3>
-              <p className="text-sm opacity-90">Ask me anything!</p>
+              <h3 className="font-bold text-lg">Trading AI Assistant</h3>
+              <p className="text-sm opacity-90">Markets • Strategies • Analysis</p>
             </div>
 
             {/* Messages */}
