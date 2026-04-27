@@ -103,22 +103,22 @@ const Hero = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-4 border-2 border-primary-500"
+                  className="absolute bottom-4 right-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl p-4 border-2 border-primary-500"
                 >
-                  <div className="flex items-end gap-1 h-20 w-32">
+                  <div className="flex items-end gap-1.5 h-24 w-40">
                     {chartData.map((height, index) => (
                       <motion.div
                         key={index}
-                        className="flex-1 bg-gradient-to-t from-primary-500 to-accent-500 rounded-t"
+                        className="flex-1 bg-gradient-to-t from-primary-500 to-accent-500 rounded-t-lg"
                         initial={{ height: 0 }}
                         animate={{ height: `${height}%` }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
                       />
                     ))}
                   </div>
-                  <div className="flex items-center gap-2 mt-2">
-                    <TrendingUp size={16} className="text-green-500" />
-                    <span className="text-xs font-bold text-gray-900 dark:text-white">Live Analytics</span>
+                  <div className="flex items-center gap-2 mt-3">
+                    <TrendingUp size={18} className="text-green-500" />
+                    <span className="text-sm font-bold text-gray-900 dark:text-white">Live Analytics</span>
                   </div>
                 </motion.div>
 
@@ -127,7 +127,7 @@ const Hero = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.7, duration: 0.6 }}
-                  className="absolute -top-6 -left-6 bg-accent-500 text-white rounded-2xl shadow-2xl p-4 flex items-center gap-2"
+                  className="absolute top-4 left-4 bg-accent-500 text-white rounded-2xl shadow-2xl p-4 flex items-center gap-2"
                 >
                   <Code size={24} />
                   <div>
