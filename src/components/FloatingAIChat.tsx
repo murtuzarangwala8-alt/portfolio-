@@ -80,6 +80,17 @@ const FloatingAIChat = () => {
   const sendMessage = async (userMessage: string) => {
     if (!userMessage.trim()) return;
 
+    // Check message length
+    if (userMessage.length > 500) {
+      const errorMsg: Message = {
+        role: 'assistant',
+        content: 'Message too long. Please keep it under 500 characters.',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMsg]);
+      return;
+    }
+
     const userMsg: Message = {
       role: 'user',
       content: userMessage,
@@ -90,16 +101,40 @@ const FloatingAIChat = () => {
     setInput('');
     setIsLoading(true);
 
-    setTimeout(() => {
+    try {
+      // Call Netlify function
+      const response = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: userMessage })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get response');
+      }
+
       const assistantMsg: Message = {
         role: 'assistant',
-        content: getMockResponse(userMessage),
+        content: data.response,
         timestamp: new Date()
       };
       setMessages(prev => [...prev, assistantMsg]);
+    } catch (error) {
+      console.error('Chat error:', error);
+      const errorMsg: Message = {
+        role: 'assistant',
+        content: 'Sorry, the AI assistant is temporarily unavailable. Please try again later.',
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMsg]);
+    } finally {
       setIsLoading(false);
       scrollToBottom();
-    }, 1000);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
