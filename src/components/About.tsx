@@ -64,7 +64,7 @@ const About = () => {
             <div className="relative">
               <div className="w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary-500 dark:border-accent-500 shadow-2xl">
                 <img 
-                  src="/profile-photo.png" 
+                  src="/profile-photo-2.jpeg" 
                   alt="Murtuza Rangwala" 
                   className="w-full h-full object-cover"
                   onError={(e) => {

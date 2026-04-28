@@ -20,11 +20,18 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      title: "Personal Portfolio Website",
+      description: "Modern, responsive portfolio website built with React, TypeScript, and TailwindCSS. Features real-time S&P 500 widget, AI trading chatbot, dark/light theme, and smooth animations with Framer Motion.",
+      tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion", "Vite"],
+      category: "Web Development",
+      demo: "https://murtuzarangwala8-alt.github.io/portfolio-/",
+      github: "https://github.com/murtuzarangwala8-alt/portfolio-",
+    },
+    {
       title: "Household Financial Market Participation Analysis",
       description: "Comprehensive econometric analysis of household investment behavior using panel data regression and probit models. Examined factors influencing stock market participation across European households.",
       tags: ["R", "Stata", "Econometrics", "Panel Data", "Regression"],
       category: "Finance",
-      // github: "https://github.com/yourusername/project", // TODO: Add your GitHub link
     },
     {
       title: "SME Growth & Credit Market Analysis",
@@ -72,7 +79,7 @@ const Projects = () => {
     }
   ];
 
-  const categories = ['All', 'Finance', 'Analytics', 'AI/ML'];
+  const categories = ['All', 'Web Development', 'Finance', 'Analytics', 'AI/ML'];
   const filteredProjects = filter === 'All' 
     ? projects 
     : projects.filter(p => p.category === filter);
