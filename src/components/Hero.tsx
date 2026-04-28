@@ -219,16 +219,33 @@ const HeroContent = ({
           transition={{ duration: 0.3 }}
           className="relative w-full max-w-[260px] sm:max-w-[340px] md:max-w-md mx-auto"
         >
-          <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
-            <img 
-              src="/profile-photo.png" 
-              alt="Murtuza Rangwala" 
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect fill="%23feb300" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="140" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          {/* Two Photos Layout */}
+          <div className="flex gap-3 sm:gap-4">
+            {/* Main Photo */}
+            <div className="relative flex-1 aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
+              <img 
+                src="/profile-photo.png" 
+                alt="Murtuza Rangwala" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect fill="%23feb300" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="140" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
+
+            {/* Second Photo */}
+            <div className="relative flex-1 aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-accent-500 shadow-2xl bg-gradient-to-br from-accent-100 to-primary-100">
+              <img 
+                src="/profile-photo-2.jpeg" 
+                alt="Murtuza Rangwala" 
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect fill="%23ff5e6c" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="140" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+            </div>
           </div>
 
           <motion.div
