@@ -222,8 +222,9 @@ const HeroContent = ({
           <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
             <img 
               src="/profile-photo.png" 
-              alt="Murtuza Rangwala" 
+              alt="Murtuza Rangwala - Finance and Data Analyst specializing in Investment Banking and Financial Modeling" 
               className="w-full h-full object-cover"
+              loading="eager"
               onError={(e) => {
                 e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect fill="%23feb300" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="140" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
               }}
@@ -292,11 +293,11 @@ const HeroContent = ({
             </span>
             <span className="block">
               <span className="bg-gradient-to-r from-primary-500 via-accent-500 to-accent-600 bg-clip-text text-transparent font-extrabold">
-                Murtuza
+                Murtuza Rangwala
               </span>
             </span>
-            <span className="block text-gray-800 dark:text-gray-200 font-bold">
-              Rangwala
+            <span className="block text-gray-800 dark:text-gray-200 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
+              Finance & Data Analytics Portfolio
             </span>
           </h1>
         </motion.div>
@@ -308,7 +309,7 @@ const HeroContent = ({
           className="space-y-3"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-            Data & AI Analyst | Business Strategist
+            Investment Banking | Financial Modeling | Data Analytics
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
         </motion.div>
@@ -319,20 +320,20 @@ const HeroContent = ({
           transition={{ delay: 0.7 }}
           className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl"
         >
-          Transforming complex data into actionable insights. I blend{' '}
+          Transforming complex data into actionable insights. I specialize in{' '}
           <span className="font-bold text-primary-600 dark:text-primary-400">
-            quantitative finance
+            Investment Banking
           </span>
           ,{' '}
           <span className="font-bold text-accent-600 dark:text-accent-400">
-            machine learning
+            Financial Modeling
           </span>
           , and{' '}
           <span className="font-bold text-primary-600 dark:text-primary-400">
-            business strategy
+            Machine Learning
           </span>
-          {' '}to build data-driven solutions that scale. From equity markets to AI systems, 
-          I turn messy data into clear decisions.
+          {' '}with expertise in Python, SQL, and quantitative finance. From equity markets to consulting, 
+          I deliver data-driven solutions using econometrics and advanced analytics.
         </motion.p>
 
         <motion.div

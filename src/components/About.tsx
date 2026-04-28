@@ -65,8 +65,9 @@ const About = () => {
               <div className="w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary-500 dark:border-accent-500 shadow-2xl">
                 <img 
                   src="/profile-photo-2.jpeg" 
-                  alt="Murtuza Rangwala" 
+                  alt="Murtuza Rangwala - Finance Analyst with expertise in Python, SQL, and Machine Learning" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
                   onError={(e) => {
                     e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320"%3E%3Crect fill="%23feb300" width="320" height="320"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="120" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
                   }}
@@ -85,21 +86,22 @@ const About = () => {
           >
             <div className="glass-card p-8">
               <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
-                From Markets to Models
+                Finance & Data Analytics Expert
               </h3>
               <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                I started my journey in the fast-paced world of equity trading, where split-second decisions 
-                and data interpretation were everything. That experience taught me the value of turning raw 
-                information into actionable insights.
+                I started my journey in Investment Banking and equity trading, where I developed expertise in 
+                Financial Modeling, quantitative analysis, and data-driven decision making. My experience in 
+                consulting and financial markets taught me the value of turning complex data into actionable insights.
               </p>
               <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                My academic path took me from Computer Science in Mumbai to Economics & Data Analysis in Verona, 
-                where I deepened my expertise in econometrics, time-series forecasting, and quantitative methods.
+                My academic path combines Computer Science from Mumbai with Economics & Data Analysis from Verona, 
+                where I mastered econometrics, time-series forecasting, Python, SQL, and Machine Learning techniques 
+                for financial applications.
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Today, I bridge the gap between business strategy and technical execution—whether it's building 
-                predictive models, designing dashboards, or architecting AI systems that help organizations make 
-                smarter decisions at scale.
+                Today, I bridge finance and technology—building predictive models, designing analytics dashboards, 
+                and delivering consulting solutions that help organizations make smarter investment decisions through 
+                advanced data analytics and quantitative methods.
               </p>
             </div>
           </motion.div>
