@@ -225,7 +225,7 @@ const HeroContent = ({
         >
           <div className="relative aspect-square rounded-3xl overflow-hidden border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
             <img 
-              src="/profile-photo.jpg" 
+              src="/profile-photo.png" 
               alt="Murtuza Rangwala" 
               className="w-full h-full object-cover"
               onError={(e) => {
