@@ -91,8 +91,16 @@ const Experience = () => {
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                   <div className="glass-card p-6 hover:shadow-2xl transition-all duration-300">
                     <div className="flex items-start gap-4 mb-4">
-                      <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg text-white flex-shrink-0">
-                        <Briefcase className="w-6 h-6" />
+                      <div className={`p-3 rounded-lg flex-shrink-0 ${
+                        exp.company === "Mohamedally Akbarally & Co." 
+                          ? "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700" 
+                          : "bg-gradient-to-br from-primary-500 to-accent-500 text-white"
+                      }`}>
+                        {exp.company === "Mohamedally Akbarally & Co." ? (
+                          <img src="/maco-logo.png" alt="Mohamedally Akbarally & Co." className="w-6 h-6 object-contain" />
+                        ) : (
+                          <Briefcase className="w-6 h-6" />
+                        )}
                       </div>
                       <div className="flex-1">
                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">

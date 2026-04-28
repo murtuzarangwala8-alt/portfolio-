@@ -9,11 +9,11 @@ const About = () => {
 
   const timeline = [
     {
-      icon: <GraduationCap className="w-6 h-6" />,
+      icon: <img src="/univr-logo.jpg" alt="University of Verona" className="w-6 h-6 object-contain" />,
       title: "MSc Economics & Data Analysis",
       subtitle: "University of Verona, Italy",
       description: "Specialized in econometrics, quantitative finance, and advanced data analytics.",
-      year: "2022-2024"
+      year: "2023-2026"
     },
     {
       icon: <Briefcase className="w-6 h-6" />,
@@ -27,14 +27,14 @@ const About = () => {
       title: "BSc Computer Science",
       subtitle: "University of Mumbai, India",
       description: "Built strong foundation in programming, algorithms, and software development.",
-      year: "2016-2019"
+      year: "2019-2022"
     },
     {
       icon: <TrendingUp className="w-6 h-6" />,
       title: "Equity Dealer",
       subtitle: "Motilal Oswal Financial Services",
       description: "Managed client portfolios, executed trades, and provided market insights.",
-      year: "2018-2019"
+      year: "2020-2020"
     }
   ];
 
