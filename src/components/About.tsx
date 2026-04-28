@@ -9,7 +9,7 @@ const About = () => {
 
   const timeline = [
     {
-      icon: <img src="/univr-logo.jpg" alt="University of Verona" className="w-6 h-6 object-contain" />,
+      icon: <GraduationCap className="w-6 h-6" />,
       title: "MSc Economics & Data Analysis",
       subtitle: "University of Verona, Italy",
       description: "Specialized in econometrics, quantitative finance, and advanced data analytics.",
@@ -63,13 +63,12 @@ const About = () => {
           >
             <div className="relative">
               <div className="w-80 h-80 rounded-2xl overflow-hidden border-4 border-primary-500 dark:border-accent-500 shadow-2xl">
-                {/* TODO: Add your photo to public/profile-photo.jpg */}
                 <img 
-                  src="/profile-photo.jpg" 
+                  src="/profile-photo.png" 
                   alt="Murtuza Rangwala" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320"%3E%3Crect fill="%233b82f6" width="320" height="320"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="120" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
+                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320"%3E%3Crect fill="%23feb300" width="320" height="320"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="120" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
                   }}
                 />
               </div>
