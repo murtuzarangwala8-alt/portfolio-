@@ -93,7 +93,7 @@ const Contact = () => {
     {
       icon: <MessageCircle className="w-6 h-6" />,
       label: "WhatsApp",
-      href: "https://wa.me/YOUR_PHONE_NUMBER", // TODO: Replace with your WhatsApp number (format: https://wa.me/1234567890)
+      href: "https://wa.me/393509629833",
       color: "from-green-500 to-green-600"
     },
     {
@@ -105,7 +105,7 @@ const Contact = () => {
     {
       icon: <GithubIcon className="w-6 h-6" />,
       label: "GitHub",
-      href: "https://github.com/YOUR_GITHUB_USERNAME", // TODO: Replace with your GitHub username
+      href: "https://github.com/murtuzarangwala8-alt",
       color: "from-gray-700 to-gray-900"
     }
   ];
