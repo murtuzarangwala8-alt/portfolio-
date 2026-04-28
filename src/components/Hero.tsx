@@ -118,7 +118,7 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Real TradingView S&P 500 Widget */}
+      {/* Real TradingView S&P 500 Widget - Ultra Compact - Hidden on Mobile */}
       <motion.div
         drag
         dragConstraints={{
@@ -132,30 +132,30 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.95, x: 80, y: -40 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="fixed top-24 right-8 z-50 cursor-grab"
+        className="hidden md:block fixed top-24 right-8 z-50 cursor-grab"
       >
         <motion.div
           whileHover={{ scale: 1.02 }}
-          className="w-[350px] bg-gray-900 rounded-2xl shadow-2xl overflow-hidden"
+          className="w-[280px] bg-gray-900/95 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden"
         >
-          {/* Header with Close Button */}
-          <div className="px-4 py-2 flex items-center justify-between bg-gray-900">
-            <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-sm font-bold text-white/90">S&P 500 Live</span>
+          {/* Minimal Header */}
+          <div className="px-3 py-1.5 flex items-center justify-between bg-gray-900/90">
+            <div className="flex items-center gap-1.5">
+              <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-xs font-semibold text-white/90">S&P 500</span>
             </div>
             <motion.button
               whileHover={{ scale: 1.1, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => setShowWidget(false)}
-              className="p-1 hover:bg-white/10 rounded-lg transition-colors"
+              className="p-0.5 hover:bg-white/10 rounded transition-colors"
             >
-              <X size={18} className="text-white/70" />
+              <X size={14} className="text-white/60" />
             </motion.button>
           </div>
 
-          {/* TradingView Widget Container - Compact */}
-          <div className="relative bg-gray-900" style={{ height: '180px', overflow: 'hidden' }}>
+          {/* Ultra Compact Widget */}
+          <div className="relative bg-gray-900" style={{ height: '140px', overflow: 'hidden' }}>
             <div 
               id="tradingview-widget-container"
               className="tradingview-widget-container w-full h-full"
@@ -163,29 +163,25 @@ const Hero = () => {
                 border: 'none', 
                 margin: 0, 
                 padding: 0,
-                transform: 'scale(1.1)',
+                transform: 'scale(1.15)',
                 transformOrigin: 'center center'
               }}
             />
           </div>
 
-          {/* Footer - Minimal */}
-          <div className="px-4 py-1.5 bg-gray-900">
-            <div className="flex items-center justify-between">
-              <span className="text-[9px] text-white/30">
-                Data by TradingView
-              </span>
-              <motion.a
-                href="https://www.tradingview.com/symbols/SPX500USD/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-1 text-[9px] text-primary-400 hover:text-primary-300 transition-colors"
-              >
-                Full Chart
-                <ExternalLink size={9} />
-              </motion.a>
-            </div>
+          {/* Minimal Footer */}
+          <div className="px-3 py-1 bg-gray-900/90 flex items-center justify-between">
+            <span className="text-[8px] text-white/25">TradingView</span>
+            <motion.a
+              href="https://www.tradingview.com/symbols/SPX500USD/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-0.5 text-[8px] text-primary-400/80 hover:text-primary-300 transition-colors"
+            >
+              Chart
+              <ExternalLink size={8} />
+            </motion.a>
           </div>
         </motion.div>
       </motion.div>
@@ -209,19 +205,19 @@ const HeroContent = ({
   setShowTooltip: (show: boolean) => void;
   scrollToSection: (id: string) => void;
 }) => (
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12">
-    <div className="grid lg:grid-cols-2 gap-16 items-center">
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
+    <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
       {/* Left Side - Photo */}
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative"
+        className="relative order-1 lg:order-1"
       >
         <motion.div
           whileHover={{ y: -8, scale: 1.02 }}
           transition={{ duration: 0.3 }}
-          className="relative w-full max-w-md mx-auto"
+          className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md mx-auto"
         >
           <div className="relative aspect-square rounded-3xl overflow-hidden border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
             <img 
@@ -239,11 +235,11 @@ const HeroContent = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="absolute -bottom-5 left-1/2 transform -translate-x-1/2"
+            className="absolute -bottom-4 sm:-bottom-5 left-1/2 transform -translate-x-1/2 w-full px-4"
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
-            <motion.div whileHover={{ scale: 1.05 }} className="relative">
+            <motion.div whileHover={{ scale: 1.05 }} className="relative flex justify-center">
               <motion.div
                 animate={{ 
                   boxShadow: [
@@ -253,17 +249,17 @@ const HeroContent = ({
                   ]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-6 py-3 rounded-full text-sm font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
+                className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
               >
-                <Sparkles size={16} className="animate-pulse" />
-                Open to Opportunities
+                <Sparkles size={14} className="animate-pulse sm:w-4 sm:h-4" />
+                <span className="whitespace-nowrap">Open to Opportunities</span>
               </motion.div>
 
               {showTooltip && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl z-50"
+                  className="hidden sm:block absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl z-50"
                 >
                   Available for internships, consulting, and analyst roles
                   <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45" />
@@ -272,8 +268,8 @@ const HeroContent = ({
             </motion.div>
           </motion.div>
 
-          <div className="absolute -z-10 top-1/4 -left-12 w-48 h-48 bg-primary-500/20 rounded-full blur-3xl" />
-          <div className="absolute -z-10 bottom-1/4 -right-12 w-48 h-48 bg-accent-500/20 rounded-full blur-3xl" />
+          <div className="hidden sm:block absolute -z-10 top-1/4 -left-12 w-48 h-48 bg-primary-500/20 rounded-full blur-3xl" />
+          <div className="hidden sm:block absolute -z-10 bottom-1/4 -right-12 w-48 h-48 bg-accent-500/20 rounded-full blur-3xl" />
         </motion.div>
       </motion.div>
 
@@ -282,16 +278,16 @@ const HeroContent = ({
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="space-y-8"
+        className="space-y-6 md:space-y-8 order-2 lg:order-2 mt-8 lg:mt-0"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="mt-8"
+          className="mt-0 md:mt-8"
         >
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
-            <span className="text-2xl sm:text-3xl text-gray-600 dark:text-gray-400 font-normal block mb-2">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-normal block mb-2">
               Hi, I'm
             </span>
             <span className="block">
@@ -311,7 +307,7 @@ const HeroContent = ({
           transition={{ delay: 0.6 }}
           className="space-y-3"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
             Data & AI Analyst | Business Strategist
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
@@ -321,7 +317,7 @@ const HeroContent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl"
+          className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl"
         >
           Transforming complex data into actionable insights. I blend{' '}
           <span className="font-bold text-primary-600 dark:text-primary-400">
@@ -343,16 +339,16 @@ const HeroContent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9 }}
-          className="flex flex-wrap gap-4"
+          className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
         >
           <motion.a
             href="/resume.pdf"
             download
             whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(254,179,0,0.3)' }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-xl font-bold shadow-lg hover:shadow-2xl transition-all"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-xl font-bold shadow-lg hover:shadow-2xl transition-all text-sm sm:text-base"
           >
-            <Download size={20} />
+            <Download size={18} className="sm:w-5 sm:h-5" />
             Download Resume
           </motion.a>
           
@@ -360,11 +356,11 @@ const HeroContent = ({
             onClick={() => scrollToSection('#projects')}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-primary-500 text-primary-600 dark:text-primary-400 rounded-xl font-bold hover:bg-primary-500 hover:text-white transition-all"
+            className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-primary-500 text-primary-600 dark:text-primary-400 rounded-xl font-bold hover:bg-primary-500 hover:text-white transition-all text-sm sm:text-base"
           >
-            <Briefcase size={20} />
+            <Briefcase size={18} className="sm:w-5 sm:h-5" />
             View Projects
-            <ExternalLink size={16} />
+            <ExternalLink size={14} className="sm:w-4 sm:h-4" />
           </motion.button>
         </motion.div>
 
@@ -381,7 +377,7 @@ const HeroContent = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.2 + index * 0.05 }}
               whileHover={{ scale: 1.1, y: -2 }}
-              className="px-4 py-2 bg-white dark:bg-gray-800 border border-primary-500/30 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:border-primary-500 transition-all cursor-default"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white dark:bg-gray-800 border border-primary-500/30 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow-md hover:border-primary-500 transition-all cursor-default"
             >
               {tech}
             </motion.span>
@@ -390,9 +386,9 @@ const HeroContent = ({
       </motion.div>
     </div>
 
-    {/* Scroll Indicator */}
+    {/* Scroll Indicator - Hidden on Mobile */}
     <motion.div
-      className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+      className="hidden md:block absolute bottom-8 left-1/2 transform -translate-x-1/2"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, y: [0, 10, 0] }}
       transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
