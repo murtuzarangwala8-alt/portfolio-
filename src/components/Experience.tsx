@@ -20,7 +20,7 @@ const Experience = () => {
       role: "Business Analyst",
       company: "Dimitra International",
       location: "Berlin, Germany",
-      period: "Jan 2022 - Aug 2022",
+      period: "Oct 2025 - Jan 2026",
       responsibilities: [
         "Conducted comprehensive market research and competitive analysis to identify growth opportunities in agricultural technology sector",
         "Developed data-driven business strategies that improved operational efficiency by 25%",
@@ -32,7 +32,7 @@ const Experience = () => {
       role: "Operations & Business Analyst",
       company: "Mohamedally Akbarally & Co.",
       location: "Mumbai, India",
-      period: "Sep 2019 - Dec 2021",
+      period: "Sep 2020 - Dec 2022",
       responsibilities: [
         "Led end-to-end data analysis projects for supply chain optimization, resulting in 20% cost reduction",
         "Designed and implemented KPI tracking systems to monitor business performance across multiple departments",
@@ -44,7 +44,7 @@ const Experience = () => {
       role: "Equity Dealer",
       company: "Motilal Oswal Financial Services Ltd.",
       location: "Mumbai, India",
-      period: "Jun 2018 - Aug 2019",
+      period: "2020 - 2020",
       responsibilities: [
         "Managed client portfolios worth $2M+, executing trades and providing market insights",
         "Conducted fundamental and technical analysis of stocks across multiple sectors",
