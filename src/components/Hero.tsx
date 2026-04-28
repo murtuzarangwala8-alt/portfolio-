@@ -46,7 +46,7 @@ const Hero = () => {
 
   if (!showWidget) {
     return (
-      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
+      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20">
         {/* Premium Grid Background */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(254,179,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(254,179,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -87,7 +87,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20">
       {/* Premium Grid Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(254,179,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(254,179,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -205,21 +205,21 @@ const HeroContent = ({
   setShowTooltip: (show: boolean) => void;
   scrollToSection: (id: string) => void;
 }) => (
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-8 md:py-12">
-    <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 md:py-10">
+    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
       {/* Left Side - Photo */}
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative order-1 lg:order-1"
+        className="relative order-1 lg:order-1 flex justify-center"
       >
         <motion.div
           whileHover={{ y: -8, scale: 1.02 }}
           transition={{ duration: 0.3 }}
-          className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md mx-auto"
+          className="relative w-full max-w-[260px] sm:max-w-[340px] md:max-w-md mx-auto"
         >
-          <div className="relative aspect-square rounded-3xl overflow-hidden border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
+          <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
             <img 
               src="/profile-photo.png" 
               alt="Murtuza Rangwala" 
@@ -235,7 +235,7 @@ const HeroContent = ({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="absolute -bottom-4 sm:-bottom-5 left-1/2 transform -translate-x-1/2 w-full px-4"
+            className="absolute -bottom-3 sm:-bottom-4 md:-bottom-5 left-1/2 transform -translate-x-1/2 w-full px-2 sm:px-4"
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           >
@@ -249,9 +249,9 @@ const HeroContent = ({
                   ]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex items-center gap-1.5 sm:gap-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
+                className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
               >
-                <Sparkles size={14} className="animate-pulse sm:w-4 sm:h-4" />
+                <Sparkles size={12} className="animate-pulse sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
                 <span className="whitespace-nowrap">Open to Opportunities</span>
               </motion.div>
 
@@ -278,7 +278,7 @@ const HeroContent = ({
         initial={{ opacity: 0, x: 100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="space-y-6 md:space-y-8 order-2 lg:order-2 mt-8 lg:mt-0"
+        className="space-y-4 sm:space-y-6 md:space-y-8 order-2 lg:order-2 mt-6 sm:mt-8 lg:mt-0"
       >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
