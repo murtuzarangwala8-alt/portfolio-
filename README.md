@@ -28,7 +28,9 @@ Professional portfolio website for **Murtuza Rangwala**, a Finance & Data Analys
 
 - **Frontend:** React, TypeScript, TailwindCSS, Framer Motion
 - **Build Tool:** Vite
-- **Deployment:** GitHub Pages
+- **Deployment:** Vercel
+- **Backend:** Vercel Serverless Functions
+- **AI:** Google Gemini API
 - **Analytics:** Python, R, SQL, Power BI
 
 ## Features
@@ -36,9 +38,11 @@ Professional portfolio website for **Murtuza Rangwala**, a Finance & Data Analys
 - ✅ Responsive design (mobile, tablet, desktop)
 - ✅ Dark/Light theme toggle
 - ✅ Real-time S&P 500 market widget
-- ✅ AI Trading Chatbot
+- ✅ AI Trading Chatbot (Gemini API)
 - ✅ SEO optimized
 - ✅ Fast loading performance
+- ✅ Serverless backend (Vercel Functions)
+- ✅ Secure API key management
 
 ## Contact
 

@@ -102,8 +102,8 @@ const FloatingAIChat = () => {
     setIsLoading(true);
 
     try {
-      // Call Netlify function
-      const response = await fetch('/.netlify/functions/chat', {
+      // Call Vercel serverless function
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
