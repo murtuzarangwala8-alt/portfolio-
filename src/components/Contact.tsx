@@ -25,25 +25,22 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // TODO: Replace with actual form submission logic (e.g., EmailJS, Formspree, or your backend)
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setSubmitStatus('success');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-      
-      setTimeout(() => setSubmitStatus('idle'), 3000);
-    }, 1500);
-
-    /*
-    TODO: Implement actual form submission like this:
+    setSubmitStatus('idle');
     
     try {
-      const response = await fetch('/api/contact', {
+      // Submit to Formspree
+      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email,
+          _subject: `New message from ${formData.name} - Portfolio Contact Form`
+        })
       });
       
       if (response.ok) {
@@ -57,9 +54,8 @@ const Contact = () => {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 3000);
+      setTimeout(() => setSubmitStatus('idle'), 5000);
     }
-    */
   };
 
   const contactInfo = [
@@ -309,9 +305,9 @@ const Contact = () => {
                   <motion.p
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-green-600 dark:text-green-400 text-center"
+                    className="text-green-600 dark:text-green-400 text-center font-medium"
                   >
-                    ✓ Message sent successfully! I'll get back to you soon.
+                    ✓ Thank you! Your message has been sent.
                   </motion.p>
                 )}
 
