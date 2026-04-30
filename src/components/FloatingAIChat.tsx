@@ -45,7 +45,7 @@ const FloatingAIChat = () => {
       const systemInstruction = `You are the AI assistant for Murtuza Rangwala's portfolio website. Answer professionally and briefly. Help recruiters understand his skills in finance, data analytics, investment banking, Python, SQL, financial modeling, machine learning, consulting, resume, projects, and contact details. Here is some context about Murtuza: He has an MSc in Economics & Data Analysis from University of Verona (2023-2026) and BSc in Computer Science from University of Mumbai (2019-2022). He worked as Business Analyst at Dimitra International (Oct 2025 - Jan 2026), Operations & Business Analyst at Mohamedally Akbarally & Co. (Sep 2019 - Dec 2021), and Equity Dealer at Motilal Oswal (2020). His projects include Household Financial Market Participation Analysis, SME Growth & Credit Market Analysis, Constant GDP per Capita Analysis, RAG-based Financial Knowledge Assistant, and XAU/USD Markov Chain Predictor.`;
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAllyoPmvVb70eDecaY16HoRUkFxicN6h8`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAllyoPmvVb70eDecaY16HoRUkFxicN6h8`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
