@@ -151,7 +151,7 @@ Be concise, friendly and professional. Never invent facts.`;
         headers: { 'Content-Type': 'application/json', 'X-goog-api-key': API_KEY },
         body: JSON.stringify({
           contents: [{ parts: [{ text: `${systemInstruction}\n\nUser question: ${userMessage}` }] }],
-          generationConfig: { temperature: 0.5, maxOutputTokens: 300 }
+          generationConfig: { temperature: 0.5 }
         })
       }
     );
