@@ -289,15 +289,12 @@ const HeroContent = ({
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
             <span className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-normal block mb-2">
-              Hi, I'm
+              Hi, I'm Murtuza Rangwala
             </span>
             <span className="block">
               <span className="bg-gradient-to-r from-primary-500 via-accent-500 to-accent-600 bg-clip-text text-transparent font-extrabold">
-                Murtuza Rangwala
+                Finance & Data Analytics
               </span>
-            </span>
-            <span className="block text-gray-800 dark:text-gray-200 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-2">
-              Finance & Data Analytics Portfolio
             </span>
           </h1>
         </motion.div>
@@ -309,7 +306,7 @@ const HeroContent = ({
           className="space-y-3"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-            Investment Banking | Financial Modeling | Data Analytics
+            Data Science | Financial Modeling | Data Analytics
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
         </motion.div>
@@ -318,22 +315,34 @@ const HeroContent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl"
+          className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl space-y-4"
         >
-          Transforming complex data into actionable insights. I specialize in{' '}
-          <span className="font-bold text-primary-600 dark:text-primary-400">
-            Investment Banking
+          <span className="block">
+            I specialize in transforming complex data into actionable insights through a combination of data science, statistical modeling, and financial analysis.
           </span>
-          ,{' '}
-          <span className="font-bold text-accent-600 dark:text-accent-400">
-            Financial Modeling
+          
+          <span className="block">
+            With a strong foundation in machine learning, econometrics, and quantitative methods, I develop data-driven solutions across finance, consulting, and analytics-driven environments, including applications in investment banking.
           </span>
-          , and{' '}
-          <span className="font-bold text-primary-600 dark:text-primary-400">
-            Machine Learning
+          
+          <span className="block font-semibold text-gray-900 dark:text-white">
+            My core expertise includes:
           </span>
-          {' '}with expertise in Python, SQL, and quantitative finance. From equity markets to consulting, 
-          I deliver data-driven solutions using econometrics and advanced analytics.
+          
+          <span className="block ml-4">
+            • Data Analysis & Machine Learning using{' '}
+            <span className="font-bold text-primary-600 dark:text-primary-400">Python</span>
+            <br />
+            • <span className="font-bold text-accent-600 dark:text-accent-400">SQL</span> & Data Management
+            <br />
+            • Econometric & Statistical Modeling
+            <br />
+            • <span className="font-bold text-primary-600 dark:text-primary-400">Financial Modeling</span> & Valuation
+          </span>
+          
+          <span className="block">
+            I work with structured and real-world datasets to uncover patterns, build predictive models, and support decision-making with clear, data-backed insights.
+          </span>
         </motion.p>
 
         <motion.div
