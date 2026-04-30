@@ -32,18 +32,21 @@ const Projects = () => {
       description: "Intelligent trading assistant powered by Google Gemini AI. Provides real-time market analysis, trading insights, and financial advice. Features conversational interface with context-aware responses. (Under Development)",
       tags: ["Python", "Gemini AI", "React", "Trading", "NLP"],
       category: "AI/ML",
+      github: "https://github.com/murtuzarangwala8-alt/portfolio-/blob/main/api/chat.js",
     },
     {
       title: "Household Financial Market Participation Analysis",
       description: "Comprehensive econometric analysis of household investment behavior using panel data regression and probit models. Examined factors influencing stock market participation across European households.",
       tags: ["R", "Stata", "Econometrics", "Panel Data", "Regression"],
       category: "Finance",
+      github: "https://github.com/murtuzarangwala8-alt/household-stock-market-participation-italy",
     },
     {
       title: "SME Growth & Credit Market Analysis",
       description: "World Bank data analysis examining the relationship between SME growth and credit market accessibility. Applied time-series forecasting and multivariate regression techniques.",
-      tags: ["R", "World Bank Data", "Time-Series", "Forecasting"],
+      tags: ["Python", "World Bank Data", "ARIMA", "OLS Regression", "Time-Series"],
       category: "Finance",
+      github: "https://github.com/murtuzarangwala8-alt/sme-growth-credit-analysis-",
     },
     {
       title: "Financial Forecasting Model",
