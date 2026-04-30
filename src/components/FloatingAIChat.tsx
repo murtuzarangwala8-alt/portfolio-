@@ -28,57 +28,45 @@ const FloatingAIChat = () => {
   const sendMessage = async (userMessage: string) => {
     if (!userMessage.trim()) return;
 
-    // Check message length
     if (userMessage.length > 500) {
-      const errorMsg: Message = {
+      setMessages(prev => [...prev, {
         role: 'assistant',
         content: 'Message too long. Please keep it under 500 characters.',
         timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorMsg]);
+      }]);
       return;
     }
 
-    const userMsg: Message = {
-      role: 'user',
-      content: userMessage,
-      timestamp: new Date()
-    };
-
-    setMessages(prev => [...prev, userMsg]);
+    setMessages(prev => [...prev, { role: 'user', content: userMessage, timestamp: new Date() }]);
     setInput('');
     setIsLoading(true);
 
     try {
-      // Call Vercel serverless function
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ message: userMessage })
-      });
+      const systemInstruction = `You are the AI assistant for Murtuza Rangwala's portfolio website. Answer professionally and briefly. Help recruiters understand his skills in finance, data analytics, investment banking, Python, SQL, financial modeling, machine learning, consulting, resume, projects, and contact details. Here is some context about Murtuza: He has an MSc in Economics & Data Analysis from University of Verona (2023-2026) and BSc in Computer Science from University of Mumbai (2019-2022). He worked as Business Analyst at Dimitra International (Oct 2025 - Jan 2026), Operations & Business Analyst at Mohamedally Akbarally & Co. (Sep 2019 - Dec 2021), and Equity Dealer at Motilal Oswal (2020). His projects include Household Financial Market Participation Analysis, SME Growth & Credit Market Analysis, Constant GDP per Capita Analysis, RAG-based Financial Knowledge Assistant, and XAU/USD Markov Chain Predictor.`;
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyAllyoPmvVb70eDecaY16HoRUkFxicN6h8`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ role: 'user', parts: [{ text: `${systemInstruction}\n\nUser question: ${userMessage}` }] }],
+            generationConfig: { temperature: 0.7, maxOutputTokens: 500 }
+          })
+        }
+      );
 
       const data = await response.json();
+      const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.';
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to get response');
-      }
-
-      const assistantMsg: Message = {
-        role: 'assistant',
-        content: data.response,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, assistantMsg]);
+      setMessages(prev => [...prev, { role: 'assistant', content: aiResponse, timestamp: new Date() }]);
     } catch (error) {
       console.error('Chat error:', error);
-      const errorMsg: Message = {
+      setMessages(prev => [...prev, {
         role: 'assistant',
         content: 'Sorry, the AI assistant is temporarily unavailable. Please try again later.',
         timestamp: new Date()
-      };
-      setMessages(prev => [...prev, errorMsg]);
+      }]);
     } finally {
       setIsLoading(false);
       scrollToBottom();
