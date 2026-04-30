@@ -212,7 +212,7 @@ const HeroContent = ({
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative order-1 lg:order-1 flex justify-center mt-8 sm:mt-12 md:mt-16 lg:mt-20"
+        className="relative order-1 lg:order-1 flex justify-center mt-4 sm:mt-6 md:mt-8 lg:mt-10"
       >
         <motion.div
           whileHover={{ y: -8, scale: 1.02 }}
