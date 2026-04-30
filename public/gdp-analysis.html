@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Constant GDP per Capita Analysis (1970–2022)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f4f6f9; color: #333; }
+    header {
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      color: white; padding: 60px 40px; text-align: center;
+    }
+    header h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    header p { font-size: 1.1rem; opacity: 0.8; }
+    .badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border-radius: 20px; padding: 4px 14px; font-size: 0.85rem; margin: 6px 4px;
+    }
+    .btn {
+      display: inline-block; margin: 8px 6px 0;
+      padding: 10px 24px; border-radius: 25px; font-size: 0.95rem;
+      font-weight: 600; text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: #e94560; color: white; }
+    .btn-outline { background: transparent; border: 2px solid white; color: white; }
+    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .card {
+      background: white; border-radius: 12px; padding: 32px;
+      margin-bottom: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    h2 { font-size: 1.5rem; color: #0f3460; margin-bottom: 16px; border-left: 4px solid #e94560; padding-left: 12px; }
+    h3 { font-size: 1.1rem; color: #333; margin: 16px 0 8px; }
+    p { line-height: 1.8; color: #555; margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.9rem; }
+    th { background: #0f3460; color: white; padding: 10px 14px; text-align: left; }
+    td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+    tr:hover td { background: #f9f9f9; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+    .metric {
+      background: linear-gradient(135deg, #0f3460, #e94560);
+      color: white; border-radius: 10px; padding: 20px; text-align: center;
+    }
+    .metric .value { font-size: 1.8rem; font-weight: bold; }
+    .metric .label { font-size: 0.8rem; opacity: 0.85; margin-top: 4px; }
+    .highlight { background: #fff8e1; border-left: 4px solid #f9a825; padding: 14px 18px; border-radius: 6px; margin: 12px 0; }
+    .tag {
+      display: inline-block; background: #e8f0fe; color: #0f3460;
+      border-radius: 20px; padding: 3px 12px; font-size: 0.8rem; margin: 3px;
+    }
+    footer { text-align: center; padding: 30px; color: #999; font-size: 0.85rem; }
+    @media (max-width: 600px) { header h1 { font-size: 1.5rem; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Constant GDP per Capita Analysis</h1>
+  <p>Time-Series Analysis across U.S., Italy, Germany, Spain & France (1970–2022)</p>
+  <div style="margin-top:16px">
+    <span class="badge">🇺🇸 🇮🇹 🇩🇪 🇪🇸 🇫🇷 5 Countries</span>
+    <span class="badge">📅 1970–2022</span>
+    <span class="badge">MATLAB</span>
+    <span class="badge">📈 Time-Series</span>
+    <span class="badge">📊 Descriptive Statistics</span>
+  </div>
+  <div style="margin-top:20px">
+    <a href="https://github.com/murtuzarangwala8-alt/Constant-GDP-per-Capita-Analysis-1970-2022-" class="btn btn-primary" target="_blank">GitHub Repo</a>
+    <a href="https://murtuzarangwala8-alt.github.io/portfolio-/" class="btn btn-outline">← Back to Portfolio</a>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Overview -->
+  <div class="card">
+    <h2>Project Overview</h2>
+    <p>
+      A MATLAB-based time-series analysis of constant GDP per capita for five major economies —
+      the United States, Italy, Germany, Spain, and France — spanning 1970 to 2022.
+      The project explores long-run economic growth trends, cross-country comparisons,
+      descriptive statistics, and confidence intervals to understand structural differences
+      in economic performance over five decades.
+    </p>
+    <div style="margin-top:14px">
+      <span class="tag">MATLAB</span>
+      <span class="tag">Time-Series</span>
+      <span class="tag">GDP per Capita</span>
+      <span class="tag">Descriptive Statistics</span>
+      <span class="tag">Confidence Intervals</span>
+      <span class="tag">Data Visualization</span>
+      <span class="tag">Comparative Economics</span>
+    </div>
+  </div>
+
+  <!-- Key Metrics -->
+  <div class="card">
+    <h2>Key Metrics</h2>
+    <div class="grid">
+      <div class="metric">
+        <div class="value">5</div>
+        <div class="label">Countries Analyzed</div>
+      </div>
+      <div class="metric">
+        <div class="value">52</div>
+        <div class="label">Years of Data</div>
+      </div>
+      <div class="metric">
+        <div class="value">1970</div>
+        <div class="label">Start Year</div>
+      </div>
+      <div class="metric">
+        <div class="value">2022</div>
+        <div class="label">End Year</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Countries -->
+  <div class="card">
+    <h2>Countries Covered</h2>
+    <table>
+      <tr><th>Country</th><th>Region</th><th>Currency</th></tr>
+      <tr><td>🇺🇸 United States</td><td>North America</td><td>USD</td></tr>
+      <tr><td>🇩🇪 Germany</td><td>Western Europe</td><td>EUR</td></tr>
+      <tr><td>🇫🇷 France</td><td>Western Europe</td><td>EUR</td></tr>
+      <tr><td>🇮🇹 Italy</td><td>Southern Europe</td><td>EUR</td></tr>
+      <tr><td>🇪🇸 Spain</td><td>Southern Europe</td><td>EUR</td></tr>
+    </table>
+  </div>
+
+  <!-- Methodology -->
+  <div class="card">
+    <h2>Methodology</h2>
+    <h3>Data</h3>
+    <p>Constant GDP per capita data (inflation-adjusted, base year USD) sourced from the World Bank for all five countries over the 1970–2022 period.</p>
+
+    <h3>Analysis Steps</h3>
+    <ul style="padding-left:20px; line-height:2; color:#555">
+      <li><strong>Time-Series Visualization</strong> — Line plots of GDP per capita trends for all 5 countries</li>
+      <li><strong>Descriptive Statistics</strong> — Mean, median, standard deviation, min/max per country</li>
+      <li><strong>Confidence Intervals</strong> — 95% confidence intervals for mean GDP per capita estimates</li>
+      <li><strong>Cross-Country Comparison</strong> — Relative growth rates and structural divergence analysis</li>
+    </ul>
+
+    <div class="highlight" style="margin-top:16px">
+      <strong>Tool:</strong> MATLAB — used for data processing, statistical computation, and visualization
+    </div>
+  </div>
+
+  <!-- How to Run -->
+  <div class="card">
+    <h2>How to Run</h2>
+    <pre style="background:#1a1a2e; color:#e0e0e0; padding:20px; border-radius:8px; font-size:0.9rem; overflow-x:auto">
+git clone https://github.com/murtuzarangwala8-alt/Constant-GDP-per-Capita-Analysis-1970-2022-
+cd Constant-GDP-per-Capita-Analysis-1970-2022-
+
+# Open in MATLAB and run the main script
+</pre>
+  </div>
+
+</div>
+
+<footer>
+  <p>Murtuza Rangwala &nbsp;|&nbsp; Constant GDP per Capita Analysis (1970–2022)</p>
+  <p style="margin-top:6px">
+    <a href="https://github.com/murtuzarangwala8-alt/Constant-GDP-per-Capita-Analysis-1970-2022-" style="color:#0f3460">GitHub Repository</a>
+    &nbsp;|&nbsp;
+    <a href="https://murtuzarangwala8-alt.github.io/portfolio-/" style="color:#0f3460">Portfolio</a>
+  </p>
+</footer>
+
+</body>
+</html>

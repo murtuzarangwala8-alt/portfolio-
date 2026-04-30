@@ -42,6 +42,14 @@ const Projects = () => {
       github: "https://github.com/murtuzarangwala8-alt/household-stock-market-participation-italy",
     },
     {
+      title: "Constant GDP per Capita Analysis (1970–2022)",
+      description: "A MATLAB-based time-series analysis of constant GDP per capita for the U.S., Italy, Germany, Spain, and France from 1970–2022. Includes visualizations, descriptive statistics, and confidence intervals.",
+      tags: ["MATLAB", "Time-Series", "GDP", "Descriptive Statistics", "Data Visualization"],
+      category: "Finance",
+      github: "https://github.com/murtuzarangwala8-alt/Constant-GDP-per-Capita-Analysis-1970-2022-",
+      demo: "/gdp-analysis.html",
+    },
+    {
       title: "SME Growth & Credit Market Analysis",
       description: "World Bank data analysis examining the relationship between SME growth and credit market accessibility. Applied time-series forecasting and multivariate regression techniques.",
       tags: ["Python", "World Bank Data", "ARIMA", "OLS Regression", "Time-Series"],
