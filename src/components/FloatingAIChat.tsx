@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'AIzaSyAllyoPmvVb70eDecaY16HoRUkFxicN6h8';
 const MAX_MESSAGES = 10;
 const COOLDOWN_MS = 5000;
 const MAX_CHARS = 150;
