@@ -75,10 +75,13 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:murtuzarangwala8@gmail.com?subject=Portfolio Inquiry from ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0AFrom: ${formData.name}%0AEmail: ${formData.email}`;
-    window.location.href = mailto;
+    await fetch('https://formspree.io/f/mwvykezy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message })
+    });
     setSubmitted(true);
   };
 
