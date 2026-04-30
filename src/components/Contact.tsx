@@ -74,8 +74,8 @@ const Contact = () => {
     {
       icon: <Globe className="w-6 h-6" />,
       label: "Website",
-      value: "murtuazarangwala.online",
-      href: "https://murtuazarangwala.online"
+      value: "www.murtuza.eu",
+      href: "https://www.murtuza.eu/"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
