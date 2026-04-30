@@ -58,6 +58,20 @@ const Projects = () => {
       github: "https://github.com/murtuzarangwala8-alt/sme-growth-credit-analysis-",
     },
     {
+      title: "Time Series & Forecasting of Euro Area Real GDP Growth",
+      description: "Group academic project analysing and forecasting Euro Area real GDP growth using time-series econometric models. Applied ARIMA, VAR, and forecasting techniques on macroeconomic data for the 2023–2024 academic year.",
+      tags: ["R", "ARIMA", "VAR", "Time-Series", "Forecasting", "Econometrics"],
+      category: "Finance",
+      github: "https://github.com/murtuzarangwala8-alt/Time-Series-and-Forecasting-of-Euro-Area-Real-GDP-Growth-Group-Project-A-Academic-Year-2023-2024-",
+    },
+    {
+      title: "Time Series & Forecasting of Euro Area Real GDP Growth",
+      description: "Group academic project performing complete time-series analysis and forecasting of Euro Area (19 countries) real GDP growth rate. Includes stationarity testing, outlier removal, ARMA model identification, in-sample & out-of-sample forecasting, and sensitivity analysis across 3, 6, and 12-month horizons.",
+      tags: ["R", "ARIMA", "ARMA", "Time-Series", "Forecasting", "Econometrics"],
+      category: "Finance",
+      github: "https://github.com/murtuzarangwala8-alt/Time-Series-and-Forecasting-of-Euro-Area-Real-GDP-Growth-Group-Project-A-Academic-Year-2023-2024-",
+    },
+    {
       title: "Financial Forecasting Model",
       description: "Built ARIMA and VAR models for financial time-series prediction. Implemented backtesting framework to validate model performance on historical data.",
       tags: ["R", "ARIMA", "VAR", "Time-Series", "Forecasting"],
