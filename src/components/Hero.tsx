@@ -206,13 +206,13 @@ const HeroContent = ({
   scrollToSection: (id: string) => void;
 }) => (
   <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 md:py-10">
-    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start lg:items-center">
+    <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
       {/* Left Side - Photo */}
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="relative order-1 lg:order-1 flex justify-center -mt-16 sm:-mt-20 md:-mt-24 lg:-mt-8"
+        className="relative order-1 lg:order-1 flex justify-center mt-8 sm:mt-12 md:mt-16 lg:mt-20"
       >
         <motion.div
           whileHover={{ y: -8, scale: 1.02 }}
