@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     const systemInstruction = "You are the AI assistant for Murtuza Rangwala's portfolio website. Answer professionally and briefly. Help recruiters understand his skills in finance, data analytics, investment banking, Python, SQL, financial modeling, machine learning, consulting, resume, projects, and contact details.";
 
     // Call Gemini API
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${105241951040-omos9jse361msvuu2hd6q62doci6bshb.apps.googleusercontent.com}`;
 
     const response = await fetch(geminiUrl, {
       method: 'POST',
