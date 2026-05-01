@@ -3,27 +3,24 @@ import { useEffect, useState } from 'react';
 
 const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
   const [phase, setPhase] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    if (sessionStorage.getItem('introPlayed') === 'true') {
-      onComplete();
-      return;
-    }
-    const t1 = setTimeout(() => setPhase(1), 500);
-    const t2 = setTimeout(() => setPhase(2), 1400);
-    const t3 = setTimeout(() => setPhase(3), 2200);
-    const t4 = setTimeout(() => setPhase(4), 3000);
-    const t5 = setTimeout(() => onComplete(), 3600);
+    const t1 = setTimeout(() => setPhase(1), 400);
+    const t2 = setTimeout(() => setPhase(2), 1200);
+    const t3 = setTimeout(() => setPhase(3), 2000);
+    const t4 = setTimeout(() => setVisible(false), 2800);
+    const t5 = setTimeout(() => onComplete(), 3400);
     return () => [t1, t2, t3, t4, t5].forEach(clearTimeout);
-  }, [onComplete]);
+  }, []);
 
   return (
     <AnimatePresence>
-      {phase < 4 && (
+      {visible && (
         <motion.div
           key="intro"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 1.05 }}
+          exit={{ opacity: 0, scale: 1.04 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-gray-950"
         >
@@ -33,20 +30,20 @@ const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
           {/* Radial glow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: phase >= 1 ? 0.15 : 0, scale: phase >= 1 ? 1.5 : 0.5 }}
+            animate={{ opacity: phase >= 1 ? 0.12 : 0, scale: phase >= 1 ? 1.5 : 0.5 }}
             transition={{ duration: 1 }}
-            className="absolute w-[600px] h-[600px] rounded-full bg-gradient-to-br from-primary-500 to-accent-500 blur-3xl"
+            className="absolute w-[500px] h-[500px] rounded-full bg-gradient-to-br from-primary-500 to-accent-500 blur-3xl pointer-events-none"
           />
 
-          <div className="relative flex flex-col items-center gap-6 text-center">
-            {/* MR Initials */}
+          <div className="relative flex flex-col items-center gap-5 text-center">
+            {/* MR Logo */}
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: phase >= 1 ? 1 : 0, opacity: phase >= 1 ? 1 : 0 }}
               transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-              className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-2xl"
+              className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-2xl"
             >
-              <span className="text-4xl font-black text-white">MR</span>
+              <span className="text-3xl font-black text-white">MR</span>
             </motion.div>
 
             {/* Name */}
@@ -66,8 +63,8 @@ const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: phase >= 3 ? 1 : 0, y: phase >= 3 ? 0 : 10 }}
-              transition={{ duration: 0.5 }}
-              className="text-gray-400 text-lg tracking-widest uppercase"
+              transition={{ duration: 0.4 }}
+              className="text-gray-400 text-sm tracking-widest uppercase"
             >
               Finance & Data Analytics
             </motion.p>
@@ -76,13 +73,12 @@ const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: phase >= 2 ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-              className="w-48 h-0.5 bg-gray-800 rounded-full overflow-hidden mt-2"
+              className="w-40 h-0.5 bg-gray-800 rounded-full overflow-hidden mt-1"
             >
               <motion.div
                 initial={{ width: '0%' }}
                 animate={{ width: phase >= 2 ? '100%' : '0%' }}
-                transition={{ duration: 1.2, ease: 'easeInOut' }}
+                transition={{ duration: 1.4, ease: 'easeInOut' }}
                 className="h-full bg-gradient-to-r from-primary-500 to-accent-500 rounded-full"
               />
             </motion.div>
