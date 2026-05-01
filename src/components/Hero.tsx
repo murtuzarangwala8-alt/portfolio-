@@ -253,16 +253,19 @@ const HeroContent = ({
                 className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
               >
                 <Sparkles size={12} className="animate-pulse sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
-                <span className="whitespace-nowrap">Open to Opportunities</span>
+                <span className="whitespace-nowrap">🟢 Open to Work — Italy · Germany · Netherlands · Europe</span>
               </motion.div>
 
               {showTooltip && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="hidden sm:block absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-2 rounded-lg text-xs whitespace-nowrap shadow-xl z-50"
+                  className="hidden sm:block absolute top-full mt-2 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white px-4 py-3 rounded-lg text-xs shadow-xl z-50 w-72 text-center"
                 >
-                  Available for internships, consulting, and analyst roles
+                  <p className="font-semibold mb-1">Available for opportunities in:</p>
+                  <p>🇮🇹 Italy &nbsp;·&nbsp; 🇩🇪 Germany &nbsp;·&nbsp; 🇳🇱 Netherlands</p>
+                  <p className="mt-1">& across Europe — Remote or On-site</p>
+                  <p className="mt-1 opacity-75">Internships · Analyst roles · Consulting</p>
                   <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45" />
                 </motion.div>
               )}
