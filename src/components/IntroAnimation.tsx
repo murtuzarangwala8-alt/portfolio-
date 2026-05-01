@@ -5,11 +5,15 @@ const IntroAnimation = ({ onComplete }: { onComplete: () => void }) => {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase(1), 500);   // show initials
-    const t2 = setTimeout(() => setPhase(2), 1400);  // show name
-    const t3 = setTimeout(() => setPhase(3), 2200);  // show title
-    const t4 = setTimeout(() => setPhase(4), 3000);  // exit
-    const t5 = setTimeout(() => onComplete(), 3600); // done
+    if (sessionStorage.getItem('introPlayed') === 'true') {
+      onComplete();
+      return;
+    }
+    const t1 = setTimeout(() => setPhase(1), 500);
+    const t2 = setTimeout(() => setPhase(2), 1400);
+    const t3 = setTimeout(() => setPhase(3), 2200);
+    const t4 = setTimeout(() => setPhase(4), 3000);
+    const t5 = setTimeout(() => onComplete(), 3600);
     return () => [t1, t2, t3, t4, t5].forEach(clearTimeout);
   }, [onComplete]);
 

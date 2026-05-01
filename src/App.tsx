@@ -13,12 +13,19 @@ import IntroAnimation from './components/IntroAnimation';
 import { useState } from 'react';
 
 function App() {
-  const [introComplete, setIntroComplete] = useState(false);
+  const [introComplete, setIntroComplete] = useState(() => {
+    return sessionStorage.getItem('introPlayed') === 'true';
+  });
+
+  const handleComplete = () => {
+    sessionStorage.setItem('introPlayed', 'true');
+    setIntroComplete(true);
+  };
 
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <IntroAnimation onComplete={() => setIntroComplete(true)} />
+        <IntroAnimation onComplete={handleComplete} />
         <div className="relative" style={{ visibility: introComplete ? 'visible' : 'hidden' }}>
           <CustomCursor />
           <Navbar />
