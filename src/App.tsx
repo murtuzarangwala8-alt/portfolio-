@@ -9,12 +9,17 @@ import CustomCursor from './components/CustomCursor';
 import FloatingAIChat from './components/FloatingAIChat';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
+import IntroAnimation from './components/IntroAnimation';
+import { useState } from 'react';
 
 function App() {
+  const [introComplete, setIntroComplete] = useState(false);
+
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <div className="relative">
+        <IntroAnimation onComplete={() => setIntroComplete(true)} />
+        <div className="relative" style={{ visibility: introComplete ? 'visible' : 'hidden' }}>
           <CustomCursor />
           <Navbar />
           <main>
