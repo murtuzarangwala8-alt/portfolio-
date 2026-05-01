@@ -250,10 +250,10 @@ const HeroContent = ({
                   ]
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
+                className="inline-flex items-center gap-1 bg-gradient-to-r from-primary-500 to-accent-500 text-white px-3 py-1.5 rounded-full text-[10px] font-bold shadow-xl border-2 border-white dark:border-gray-900 cursor-pointer"
               >
-                <Sparkles size={12} className="animate-pulse sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
-                <span className="whitespace-nowrap">🟢 Open to Work — Italy · Germany · Netherlands · Europe</span>
+                <Sparkles size={10} className="animate-pulse" />
+                <span className="whitespace-nowrap">🟢 Open to Work</span>
               </motion.div>
 
               {showTooltip && (
