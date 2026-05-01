@@ -46,7 +46,7 @@ const Hero = () => {
 
   if (!showWidget) {
     return (
-      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20">
+      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20 w-full max-w-full">
         {/* Premium Grid Background */}
         <div className="absolute inset-0 opacity-30">
           <div className="absolute inset-0 bg-[linear-gradient(rgba(254,179,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(254,179,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -132,7 +132,7 @@ const Hero = () => {
         initial={{ opacity: 0, scale: 0.95, x: 80, y: -40 }}
         animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
         transition={{ delay: 1, duration: 0.6 }}
-        className="hidden md:block fixed top-24 right-8 z-50 cursor-grab"
+        className="hidden lg:block fixed top-24 right-8 z-50 cursor-grab"
       >
         <motion.div
           whileHover={{ scale: 1.02 }}
@@ -205,7 +205,7 @@ const HeroContent = ({
   setShowTooltip: (show: boolean) => void;
   scrollToSection: (id: string) => void;
 }) => (
-  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 md:py-10">
+  <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-6 md:py-10 overflow-hidden">
     <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
       {/* Left Side - Photo */}
       <motion.div
