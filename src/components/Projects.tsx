@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ExternalLink, Code as GithubIcon } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface Project {
   title: string;
@@ -16,6 +17,7 @@ interface Project {
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
   const [filter, setFilter] = useState('All');
 
   const projects: Project[] = [
@@ -56,13 +58,6 @@ const Projects = () => {
       tags: ["Python", "World Bank Data", "ARIMA", "OLS Regression", "Time-Series"],
       category: "Finance",
       github: "https://github.com/murtuzarangwala8-alt/sme-growth-credit-analysis-",
-    },
-    {
-      title: "Time Series & Forecasting of Euro Area Real GDP Growth",
-      description: "Group academic project analysing and forecasting Euro Area real GDP growth using time-series econometric models. Applied ARIMA, VAR, and forecasting techniques on macroeconomic data for the 2023–2024 academic year.",
-      tags: ["R", "ARIMA", "VAR", "Time-Series", "Forecasting", "Econometrics"],
-      category: "Finance",
-      github: "https://github.com/murtuzarangwala8-alt/Time-Series-and-Forecasting-of-Euro-Area-Real-GDP-Growth-Group-Project-A-Academic-Year-2023-2024-",
     },
     {
       title: "Time Series & Forecasting of Euro Area Real GDP Growth",
@@ -125,9 +120,9 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="section-title">Featured Projects</h2>
+          <h2 className="section-title">{t.projects.title}</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-8">
-            A selection of data analysis, financial modeling, and AI projects
+            {t.projects.subtitle}
           </p>
 
           {/* Filter Buttons */}
@@ -182,6 +177,7 @@ const getProjectIcon = (title: string): string => {
 
 const ProjectCard = ({ project, index, isInView }: { project: Project; index: number; isInView: boolean }) => {
   const [flipped, setFlipped] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <motion.div
@@ -232,7 +228,7 @@ const ProjectCard = ({ project, index, isInView }: { project: Project; index: nu
                 <span className="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-gray-500 rounded-full text-xs">+{project.tags.length - 3}</span>
               )}
             </div>
-            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2 text-right">Hover to flip →</p>
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2 text-right">{t.projects.hoverFlip}</p>
           </div>
         </div>
 
@@ -259,7 +255,7 @@ const ProjectCard = ({ project, index, isInView }: { project: Project; index: nu
                 onClick={e => e.stopPropagation()}
                 className="flex items-center gap-1.5 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-all"
               >
-                <GithubIcon size={14} /> Code
+                <GithubIcon size={14} /> {t.projects.code}
               </a>
             )}
             {project.demo && (
@@ -270,7 +266,7 @@ const ProjectCard = ({ project, index, isInView }: { project: Project; index: nu
                 onClick={e => e.stopPropagation()}
                 className="flex items-center gap-1.5 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-all"
               >
-                <ExternalLink size={14} /> Demo
+                <ExternalLink size={14} /> {t.projects.demo}
               </a>
             )}
           </div>

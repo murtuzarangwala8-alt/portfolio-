@@ -2,10 +2,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Database, TrendingUp, Brain, Briefcase } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const { t } = useLanguage();
 
   const skillCategories = [
     {
@@ -71,9 +74,9 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Skills & Expertise</h2>
+          <h2 className="section-title">{t.skills.title}</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A comprehensive toolkit spanning data science, finance, AI, and business strategy
+            {t.skills.subtitle}
           </p>
         </motion.div>
 
@@ -129,7 +132,7 @@ const Skills = () => {
           className="mt-12 text-center"
         >
           <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white">
-            Technologies & Tools
+            {t.skills.techTools}
           </h3>
           <div className="flex flex-wrap justify-center gap-3">
             {[

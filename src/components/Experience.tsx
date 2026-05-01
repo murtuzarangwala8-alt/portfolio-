@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Briefcase, Calendar } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface Experience {
   role: string;
@@ -15,6 +16,7 @@ const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const { t } = useLanguage();
   const experiences: Experience[] = [
     {
       role: "Business Analyst",
@@ -63,9 +65,9 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Professional Experience</h2>
+          <h2 className="section-title">{t.experience.title}</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A track record of delivering data-driven insights across finance, operations, and business strategy
+            {t.experience.subtitle}
           </p>
         </motion.div>
 

@@ -2,11 +2,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Mail, Link as LinkedinIcon, Globe, MapPin, Send, MessageCircle, Code as GithubIcon } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -115,9 +117,9 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="section-title">Get In Touch</h2>
+          <h2 className="section-title">{t.contact.title}</h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            Let's discuss how data and AI can drive your business forward
+            {t.contact.subtitle}
           </p>
         </motion.div>
 
@@ -130,9 +132,7 @@ const Contact = () => {
             className="space-y-6"
           >
             <div className="glass-card p-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Contact Information
-              </h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t.contact.info}</h3>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <motion.div
@@ -176,12 +176,8 @@ const Contact = () => {
             >
               <div className="text-center">
                 <MapPin className="w-16 h-16 mx-auto mb-4 text-primary-500" />
-                <p className="text-lg font-medium text-gray-900 dark:text-white">
-                  Based in Verona, Italy
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Open to remote opportunities worldwide
-                </p>
+                <p className="text-lg font-medium text-gray-900 dark:text-white">{t.contact.location}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{t.contact.remote}</p>
               </div>
             </motion.div>
 
@@ -192,9 +188,7 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="glass-card p-8"
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Connect With Me
-              </h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t.contact.connect}</h3>
               <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -224,63 +218,28 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <form onSubmit={handleSubmit} className="glass-card p-8">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Send a Message
-              </h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t.contact.send}</h3>
 
               <div className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg 
-                             text-gray-900 dark:text-gray-100 placeholder-gray-500
-                             focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                    placeholder="Your name"
-                  />
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t.contact.name}</label>
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required
+                    className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                    placeholder={t.contact.namePlaceholder} />
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg 
-                             text-gray-900 dark:text-gray-100 placeholder-gray-500
-                             focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
-                    placeholder="your.email@example.com"
-                  />
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t.contact.email}</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required
+                    className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
+                    placeholder={t.contact.emailPlaceholder} />
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg 
-                             text-gray-900 dark:text-gray-100 placeholder-gray-500
-                             focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all resize-none"
-                    placeholder="Tell me about your project or opportunity..."
-                  />
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t.contact.message}</label>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6}
+                    className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 rounded-lg text-gray-900 dark:text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all resize-none"
+                    placeholder={t.contact.messagePlaceholder} />
                 </div>
 
                 <button
@@ -288,17 +247,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                   className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={20} />
-                      Send Message
-                    </>
-                  )}
+                  {isSubmitting ? (<><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />{t.contact.sending}</>) : (<><Send size={20} />{t.contact.sendBtn}</>)}
                 </button>
 
                 {submitStatus === 'success' && (
@@ -307,7 +256,7 @@ const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-green-600 dark:text-green-400 text-center font-medium"
                   >
-                    ✓ Thank you! Your message has been sent.
+                  {t.contact.success}
                   </motion.p>
                 )}
 
@@ -317,7 +266,7 @@ const Contact = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-red-600 dark:text-red-400 text-center"
                   >
-                    ✗ Something went wrong. Please try again or email me directly.
+                  {t.contact.error}
                   </motion.p>
                 )}
               </div>
