@@ -109,7 +109,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="section-container">
+    <section id="contact" className="section-container bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

@@ -81,6 +81,15 @@ body {
   width: 100%;
 }
 
+/* GSAP initial state - prevent flash */
+.section-container {
+  will-change: transform, opacity;
+}
+
+.glass-card {
+  will-change: transform, opacity;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;

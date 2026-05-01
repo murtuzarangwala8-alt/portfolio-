@@ -57,7 +57,7 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="section-container">
+    <section id="experience" className="section-container bg-gray-50 dark:bg-gray-900/50">
       <div className="max-w-7xl mx-auto" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}

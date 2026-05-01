@@ -11,9 +11,11 @@ import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import IntroAnimation from './components/IntroAnimation';
 import { useState } from 'react';
+import useGSAPAnimations from './hooks/useGSAPAnimations';
 
 function App() {
   const [introComplete, setIntroComplete] = useState(false);
+  useGSAPAnimations();
 
   return (
     <ThemeProvider>
