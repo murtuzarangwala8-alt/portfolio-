@@ -83,11 +83,11 @@ body {
 
 /* GSAP initial state - prevent flash */
 .section-container {
-  will-change: transform, opacity;
+  will-change: auto;
 }
 
 .glass-card {
-  will-change: transform, opacity;
+  will-change: auto;
 }
 
 /* Custom scrollbar */
