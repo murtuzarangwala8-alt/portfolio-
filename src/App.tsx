@@ -19,7 +19,7 @@ function App() {
     <ThemeProvider>
       <LanguageProvider>
         {!introComplete && <IntroAnimation onComplete={() => setIntroComplete(true)} />}
-        <div style={{ visibility: introComplete ? 'visible' : 'hidden' }} className="relative">
+        <div style={{ visibility: introComplete ? 'visible' : 'hidden' }} className="relative overflow-x-hidden w-full">
           <CustomCursor />
           <Navbar />
           <main>

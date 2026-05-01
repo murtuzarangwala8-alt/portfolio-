@@ -87,7 +87,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20 w-full max-w-full">
       {/* Premium Grid Background */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(254,179,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(254,179,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
