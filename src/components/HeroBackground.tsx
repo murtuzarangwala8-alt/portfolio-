@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from '../context/ThemeContext';
 
 const HeroBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
   const animRef = useRef<number>(0);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -92,18 +94,25 @@ const HeroBackground = () => {
       const mx = mouse.current.x;
       const my = mouse.current.y;
 
-      // Dark gradient background
+      // Dark/Light gradient background
+      const isDark = theme === 'dark';
       const bg = ctx.createLinearGradient(0, 0, W, H);
-      bg.addColorStop(0, '#030712');
-      bg.addColorStop(0.5, '#0a0f1e');
-      bg.addColorStop(1, '#030712');
+      if (isDark) {
+        bg.addColorStop(0, '#030712');
+        bg.addColorStop(0.5, '#0a0f1e');
+        bg.addColorStop(1, '#030712');
+      } else {
+        bg.addColorStop(0, '#fafafa');
+        bg.addColorStop(0.5, '#f0f4ff');
+        bg.addColorStop(1, '#fafafa');
+      }
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, W, H);
 
       // Mouse radial glow
       const glow = ctx.createRadialGradient(mx, my, 0, mx, my, 300);
-      glow.addColorStop(0, 'rgba(254,179,0,0.06)');
-      glow.addColorStop(0.5, 'rgba(255,94,108,0.03)');
+      glow.addColorStop(0, isDark ? 'rgba(254,179,0,0.06)' : 'rgba(254,179,0,0.08)');
+      glow.addColorStop(0.5, isDark ? 'rgba(255,94,108,0.03)' : 'rgba(255,94,108,0.04)');
       glow.addColorStop(1, 'transparent');
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, W, H);
@@ -115,7 +124,7 @@ const HeroBackground = () => {
           const dy = nodes[i].y - nodes[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 120) {
-            const alpha = (1 - dist / 120) * 0.15;
+            const alpha = (1 - dist / 120) * (isDark ? 0.15 : 0.2);
             ctx.beginPath();
             ctx.strokeStyle = `rgba(254,179,0,${alpha})`;
             ctx.lineWidth = 0.5;
@@ -169,7 +178,7 @@ const HeroBackground = () => {
       // ── Draw scrolling chart line ──
       chartOffset += 0.3;
       ctx.beginPath();
-      ctx.strokeStyle = 'rgba(254,179,0,0.15)';
+      ctx.strokeStyle = isDark ? 'rgba(254,179,0,0.15)' : 'rgba(254,179,0,0.4)';
       ctx.lineWidth = 1.5;
       for (let i = 0; i < chartPoints.length - 1; i++) {
         const x = (i / chartPoints.length) * W - (chartOffset % (W / chartPoints.length));
@@ -189,7 +198,7 @@ const HeroBackground = () => {
       ctx.lineTo(0, H);
       ctx.closePath();
       const chartGrad = ctx.createLinearGradient(0, H * 0.3, 0, H);
-      chartGrad.addColorStop(0, 'rgba(254,179,0,0.04)');
+      chartGrad.addColorStop(0, isDark ? 'rgba(254,179,0,0.04)' : 'rgba(254,179,0,0.08)');
       chartGrad.addColorStop(1, 'transparent');
       ctx.fillStyle = chartGrad;
       ctx.fill();
@@ -231,7 +240,7 @@ const HeroBackground = () => {
       const scanY = ((Date.now() * 0.05) % H);
       const scanGrad = ctx.createLinearGradient(0, scanY - 40, 0, scanY + 40);
       scanGrad.addColorStop(0, 'transparent');
-      scanGrad.addColorStop(0.5, 'rgba(254,179,0,0.03)');
+      scanGrad.addColorStop(0.5, isDark ? 'rgba(254,179,0,0.03)' : 'rgba(254,179,0,0.05)');
       scanGrad.addColorStop(1, 'transparent');
       ctx.fillStyle = scanGrad;
       ctx.fillRect(0, scanY - 40, W, 80);
@@ -246,7 +255,7 @@ const HeroBackground = () => {
       window.removeEventListener('resize', onResize);
       window.removeEventListener('mousemove', onMouseMove);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas

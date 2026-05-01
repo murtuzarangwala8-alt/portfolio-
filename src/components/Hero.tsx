@@ -237,7 +237,7 @@ const HeroContent = ({
           className="mt-0 md:mt-8"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-normal block mb-2">
+            <span className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-300 font-normal block mb-2">
               Hi, I'm Murtuza Rangwala
             </span>
             <span className="block">
@@ -254,7 +254,7 @@ const HeroContent = ({
           transition={{ delay: 0.6 }}
           className="space-y-3"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
             Data Analyst · Data Scientist · Financial Analyst in Europe
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
@@ -264,7 +264,7 @@ const HeroContent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-xl space-y-4"
+          className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl space-y-4"
         >
           <span className="block">
             I specialize in transforming complex data into actionable insights through a combination of data science, statistical modeling, and financial analysis.
@@ -336,7 +336,7 @@ const HeroContent = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.2 + index * 0.05 }}
               whileHover={{ scale: 1.1, y: -2 }}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 border border-primary-500/30 text-gray-200 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow-md hover:border-primary-500 transition-all cursor-default"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/80 dark:bg-white/10 border border-primary-500/30 text-gray-700 dark:text-gray-200 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow-md hover:border-primary-500 transition-all cursor-default"
             >
               {tech}
             </motion.span>
