@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Download, Briefcase, Sparkles, ExternalLink, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import HeroBackground from './HeroBackground';
 
 const Hero = () => {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -46,38 +47,9 @@ const Hero = () => {
 
   if (!showWidget) {
     return (
-      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20 w-full max-w-full">
-        {/* Premium Grid Background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(254,179,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(254,179,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,94,108,0.1),transparent_50%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(254,179,0,0.1),transparent_50%)]" />
-        </div>
-
-        {/* Floating Particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-primary-500/20 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.5, 0.2],
-              }}
-              transition={{
-                duration: 3 + Math.random() * 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
-        </div>
-
-        <HeroContent 
+      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gray-950 pt-20 w-full max-w-full">
+        <HeroBackground />
+        <HeroContent
           showTooltip={showTooltip}
           setShowTooltip={setShowTooltip}
           scrollToSection={scrollToSection}
@@ -87,36 +59,8 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-beige via-white to-pink/10 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800 pt-20 w-full max-w-full">
-      {/* Premium Grid Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(254,179,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(254,179,0,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,94,108,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(254,179,0,0.1),transparent_50%)]" />
-      </div>
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary-500/20 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-gray-950 pt-20 w-full max-w-full">
+      <HeroBackground />
 
       {/* Real TradingView S&P 500 Widget - Ultra Compact - Hidden on Mobile */}
       <motion.div
@@ -293,7 +237,7 @@ const HeroContent = ({
           className="mt-0 md:mt-8"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-            <span className="text-xl sm:text-2xl md:text-3xl text-gray-600 dark:text-gray-400 font-normal block mb-2">
+            <span className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-normal block mb-2">
               Hi, I'm Murtuza Rangwala
             </span>
             <span className="block">
@@ -310,7 +254,7 @@ const HeroContent = ({
           transition={{ delay: 0.6 }}
           className="space-y-3"
         >
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
             Data Analyst · Data Scientist · Financial Analyst in Europe
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
@@ -320,7 +264,7 @@ const HeroContent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl space-y-4"
+          className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-xl space-y-4"
         >
           <span className="block">
             I specialize in transforming complex data into actionable insights through a combination of data science, statistical modeling, and financial analysis.
@@ -392,7 +336,7 @@ const HeroContent = ({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.2 + index * 0.05 }}
               whileHover={{ scale: 1.1, y: -2 }}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white dark:bg-gray-800 border border-primary-500/30 text-gray-700 dark:text-gray-300 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow-md hover:border-primary-500 transition-all cursor-default"
+              className="px-3 sm:px-4 py-1.5 sm:py-2 bg-white/10 border border-primary-500/30 text-gray-200 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow-md hover:border-primary-500 transition-all cursor-default"
             >
               {tech}
             </motion.span>
