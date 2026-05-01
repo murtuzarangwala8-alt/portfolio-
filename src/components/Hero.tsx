@@ -222,9 +222,11 @@ const HeroContent = ({
           <div className="relative aspect-square rounded-2xl sm:rounded-3xl overflow-hidden border-3 sm:border-4 border-primary-500 shadow-2xl bg-gradient-to-br from-primary-100 to-accent-100">
             <img 
               src="/profile-photo.png" 
-              alt="Murtuza Rangwala - Finance and Data Analyst specializing in Investment Banking and Financial Modeling" 
+              alt="Murtuza Rangwala - Data Analyst and Financial Analyst open to work in Italy Germany Netherlands Europe" 
               className="w-full h-full object-cover"
               loading="eager"
+              width="400"
+              height="400"
               onError={(e) => {
                 e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400"%3E%3Crect fill="%23feb300" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="140" fill="white"%3EMR%3C/text%3E%3C/svg%3E';
               }}
@@ -296,7 +298,7 @@ const HeroContent = ({
             </span>
             <span className="block">
               <span className="bg-gradient-to-r from-primary-500 via-accent-500 to-accent-600 bg-clip-text text-transparent font-extrabold">
-                Finance & Data Analytics
+                Data Analyst & Financial Analyst
               </span>
             </span>
           </h1>
@@ -309,7 +311,7 @@ const HeroContent = ({
           className="space-y-3"
         >
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
-            Data Science | Financial Modeling | Data Analytics
+            Data Analyst · Data Scientist · Financial Analyst in Europe
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full" />
         </motion.div>
@@ -383,7 +385,7 @@ const HeroContent = ({
           transition={{ delay: 1.1 }}
           className="flex flex-wrap gap-2 max-w-xl"
         >
-          {['Python', 'R', 'SQL', 'Machine Learning', 'Power BI', 'Financial Modeling', 'React'].map((tech, index) => (
+          {['Python', 'R', 'SQL', 'Machine Learning', 'Power BI', 'Financial Modeling', 'Econometrics', 'Data Science'].map((tech, index) => (
             <motion.span
               key={index}
               initial={{ opacity: 0, scale: 0.8 }}
