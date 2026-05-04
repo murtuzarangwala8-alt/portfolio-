@@ -38,11 +38,12 @@ const Projects = () => {
       demo: "https://murtuzarangwala8-alt.github.io/portfolio-/",
     },
     {
-      title: "Household Financial Market Participation Analysis",
-      description: "Comprehensive econometric analysis of household investment behavior using panel data regression and probit models. Examined factors influencing stock market participation across European households.",
-      tags: ["R", "Stata", "Econometrics", "Panel Data", "Regression"],
+      title: "Household Stock Market Participation in Italy",
+      description: "Survey-weighted probit analysis of 9,617 Italian households from the 2022 Bank of Italy SHIW dataset. Finds that log income raises participation by 12.5 pp and university education by 13.6 pp vs primary. Includes interactive HTML presentation with Chart.js visualizations.",
+      tags: ["R", "Python", "Stata", "Probit", "Econometrics", "SHIW"],
       category: "Finance",
-      github: "https://github.com/murtuzarangwala8-alt/household-stock-market-participation-italy",
+      github: "https://github.com/murtuzarangwala8-alt/italy-stock-participation",
+      demo: "https://murtuzarangwala8-alt.github.io/italy-stock-participation/presentation.html",
     },
     {
       title: "Constant GDP per Capita Analysis (1970–2022)",
@@ -163,7 +164,7 @@ const categoryEmoji: Record<string, string> = {
 const getProjectIcon = (title: string): string => {
   if (title.includes('GDP')) return '🌍';
   if (title.includes('SME') || title.includes('Credit')) return '🏦';
-  if (title.includes('Household') || title.includes('Participation')) return '🏠';
+  if (title.includes('Household') || title.includes('Participation') || title.includes('Italy')) return '🇮🇹';
   if (title.includes('Trading') || title.includes('AI')) return '🤖';
   if (title.includes('Markov') || title.includes('XAU') || title.includes('Gold')) return '🥇';
   if (title.includes('RAG') || title.includes('Knowledge')) return '🧠';
