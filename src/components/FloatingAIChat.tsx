@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || 'AIzaSyAllyoPmvVb70eDecaY16HoRUkFxicN6h8';
 const MAX_MESSAGES = 4;
 const MAX_CHARS = 150;
 
@@ -77,7 +76,7 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await fetch('https://formspree.io/f/mwvykezy', {
+    await fetch('https://formspree.io/f/mnjwable', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: formData.name, email: formData.email, message: formData.message })
@@ -136,30 +135,15 @@ const FloatingAIChat = () => {
     setMessages(prev => [...prev, { role, content }]);
 
   const callGemini = async (userMessage: string): Promise<string> => {
-    const systemInstruction = `You are Murtuza Rangwala's personal AI assistant. Only answer questions about Murtuza or general finance/economics topics. If asked anything completely unrelated, say: "I can only answer questions about Murtuza and finance topics."
-
-FACTS ABOUT MURTUZA:
-Education: MSc Economics and Data Analysis, University of Verona Italy (2023-2026). BSc Computer Science, University of Mumbai India (2019-2022).
-Experience: Business Analyst at Dimitra International Berlin (Oct 2025-Jan 2026). Operations and Business Analyst at Mohamedally Akbarally and Co Mumbai (Sep 2019-Dec 2021). Equity Dealer at Motilal Oswal Mumbai (2020).
-Skills: Python, R, SQL, MATLAB, Power BI, Excel, Stata. Econometrics, Financial Modeling, DCF, ARIMA, Time-Series. Machine Learning, LLMs, RAG, LangChain, NLP.
-Projects: Household Financial Market Participation Analysis, SME Growth and Credit Market Analysis, Constant GDP per Capita Analysis 1970-2022, RAG-based Financial Knowledge Assistant, XAU/USD Markov Chain Predictor.
-Contact: murtuzarangwala8@gmail.com. LinkedIn: linkedin.com/in/murtaza-rangwala-856456102.
-
-Be concise, friendly and professional. Never invent facts.`;
-
-    const response = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-goog-api-key': API_KEY },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: `${systemInstruction}\n\nUser question: ${userMessage}` }] }],
-          generationConfig: { temperature: 0.5 }
-        })
-      }
-    );
+    // Route through serverless function to keep API key server-side
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: userMessage })
+    });
+    if (!response.ok) throw new Error('API error');
     const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.';
+    return data.response || 'Sorry, I could not generate a response.';
   };
 
   const sendMessage = async (userMessage: string) => {

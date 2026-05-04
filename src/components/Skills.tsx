@@ -4,66 +4,92 @@ import { useRef } from 'react';
 import { Database, TrendingUp, Brain, Briefcase } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
+type Tier = 'Expert' | 'Proficient' | 'Familiar';
+
+interface SkillItem {
+  name: string;
+  tier: Tier;
+}
+
+interface SkillCategory {
+  icon: React.ReactNode;
+  title: string;
+  color: string;
+  bgColor: string;
+  skills: SkillItem[];
+}
+
+const TIER_CONFIG: Record<Tier, { label: string; color: string; dot: string }> = {
+  Expert:     { label: 'Expert',     color: 'text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-500' },
+  Proficient: { label: 'Proficient', color: 'text-primary-600 dark:text-primary-400', dot: 'bg-primary-500' },
+  Familiar:   { label: 'Familiar',   color: 'text-gray-500 dark:text-gray-400',       dot: 'bg-gray-400' },
+};
+
 const Skills = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { t } = useLanguage();
 
-  const skillCategories = [
+  const skillCategories: SkillCategory[] = [
     {
       icon: <Database className="w-8 h-8" />,
-      title: "Data & Analytics",
-      color: "from-blue-500 to-cyan-500",
+      title: 'Data & Analytics',
+      color: 'from-blue-500 to-cyan-500',
+      bgColor: 'bg-blue-50 dark:bg-blue-950/30',
       skills: [
-        { name: "Python (Pandas, NumPy)", level: 95 },
-        { name: "R & RStudio", level: 90 },
-        { name: "SQL", level: 88 },
-        { name: "Excel (Advanced)", level: 92 },
-        { name: "Power BI", level: 85 },
-        { name: "Tableau", level: 80 }
-      ]
+        { name: 'Python (Pandas, NumPy)', tier: 'Expert' },
+        { name: 'SQL',                    tier: 'Expert' },
+        { name: 'Excel (Advanced)',        tier: 'Expert' },
+        { name: 'R & RStudio',            tier: 'Proficient' },
+        { name: 'Power BI',               tier: 'Proficient' },
+        { name: 'Tableau',                tier: 'Familiar' },
+      ],
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: "Quantitative & Finance",
-      color: "from-green-500 to-emerald-500",
+      title: 'Quantitative & Finance',
+      color: 'from-green-500 to-emerald-500',
+      bgColor: 'bg-green-50 dark:bg-green-950/30',
       skills: [
-        { name: "Econometrics", level: 92 },
-        { name: "Time-Series Analysis", level: 90 },
-        { name: "Regression Modeling", level: 88 },
-        { name: "Financial Forecasting", level: 85 },
-        { name: "DCF & Valuation", level: 87 },
-        { name: "Capital Markets", level: 90 }
-      ]
+        { name: 'Econometrics',           tier: 'Expert' },
+        { name: 'Financial Modeling',     tier: 'Expert' },
+        { name: 'Capital Markets',        tier: 'Expert' },
+        { name: 'Time-Series Analysis',   tier: 'Proficient' },
+        { name: 'DCF & Valuation',        tier: 'Proficient' },
+        { name: 'Financial Forecasting',  tier: 'Proficient' },
+      ],
     },
     {
       icon: <Brain className="w-8 h-8" />,
-      title: "AI & Machine Learning",
-      color: "from-purple-500 to-pink-500",
+      title: 'AI & Machine Learning',
+      color: 'from-purple-500 to-pink-500',
+      bgColor: 'bg-purple-50 dark:bg-purple-950/30',
       skills: [
-        { name: "Machine Learning", level: 85 },
-        { name: "Scikit-learn", level: 82 },
-        { name: "LLM Integration", level: 80 },
-        { name: "RAG Systems", level: 75 },
-        { name: "Prompt Engineering", level: 88 },
-        { name: "NLP Basics", level: 78 }
-      ]
+        { name: 'Machine Learning',       tier: 'Proficient' },
+        { name: 'Prompt Engineering',     tier: 'Proficient' },
+        { name: 'Scikit-learn',           tier: 'Proficient' },
+        { name: 'LLM Integration',        tier: 'Proficient' },
+        { name: 'RAG Systems',            tier: 'Familiar' },
+        { name: 'NLP',                    tier: 'Familiar' },
+      ],
     },
     {
       icon: <Briefcase className="w-8 h-8" />,
-      title: "Business & Strategy",
-      color: "from-orange-500 to-red-500",
+      title: 'Business & Strategy',
+      color: 'from-orange-500 to-red-500',
+      bgColor: 'bg-orange-50 dark:bg-orange-950/30',
       skills: [
-        { name: "Market Research", level: 90 },
-        { name: "Strategic Analysis", level: 88 },
-        { name: "KPI Tracking", level: 92 },
-        { name: "Process Optimization", level: 85 },
-        { name: "Stakeholder Management", level: 87 },
-        { name: "Business Intelligence", level: 90 }
-      ]
-    }
+        { name: 'Market Research',        tier: 'Expert' },
+        { name: 'KPI Tracking',           tier: 'Expert' },
+        { name: 'Business Intelligence',  tier: 'Expert' },
+        { name: 'Strategic Analysis',     tier: 'Proficient' },
+        { name: 'Process Optimization',   tier: 'Proficient' },
+        { name: 'Stakeholder Management', tier: 'Proficient' },
+      ],
+    },
   ];
+
+  const tierOrder: Tier[] = ['Expert', 'Proficient', 'Familiar'];
 
   return (
     <section id="skills" className="section-container bg-white dark:bg-gray-950">
@@ -78,6 +104,18 @@ const Skills = () => {
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             {t.skills.subtitle}
           </p>
+
+          {/* Tier legend */}
+          <div className="flex items-center justify-center gap-6 mt-6">
+            {tierOrder.map((tier) => (
+              <div key={tier} className="flex items-center gap-2">
+                <span className={`w-2.5 h-2.5 rounded-full ${TIER_CONFIG[tier].dot}`} />
+                <span className={`text-sm font-medium ${TIER_CONFIG[tier].color}`}>
+                  {TIER_CONFIG[tier].label}
+                </span>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -98,27 +136,41 @@ const Skills = () => {
                 </h3>
               </div>
 
-              <div className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex}>
-                    <div className="flex justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm font-medium text-primary-500">
-                        {skill.level}%
-                      </span>
+              {/* Group skills by tier */}
+              <div className="space-y-5">
+                {tierOrder.map((tier) => {
+                  const tierSkills = category.skills.filter((s) => s.tier === tier);
+                  if (tierSkills.length === 0) return null;
+                  const cfg = TIER_CONFIG[tier];
+                  return (
+                    <div key={tier}>
+                      <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${cfg.color}`}>
+                        {cfg.label}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {tierSkills.map((skill, i) => (
+                          <motion.span
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.85 }}
+                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                            transition={{ duration: 0.3, delay: 0.4 + categoryIndex * 0.1 + i * 0.04 }}
+                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium
+                              border ${category.bgColor}
+                              ${tier === 'Expert'
+                                ? 'border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-300'
+                                : tier === 'Proficient'
+                                ? 'border-primary-300 dark:border-primary-700 text-primary-800 dark:text-primary-300'
+                                : 'border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400'
+                              }`}
+                          >
+                            <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${cfg.dot}`} />
+                            {skill.name}
+                          </motion.span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : {}}
-                        transition={{ duration: 1, delay: 0.5 + categoryIndex * 0.1 + skillIndex * 0.05 }}
-                        className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </motion.div>
           ))}
@@ -137,14 +189,14 @@ const Skills = () => {
           <div className="flex flex-wrap justify-center gap-3">
             {[
               'Python', 'R', 'SQL', 'JavaScript', 'TypeScript', 'React', 'Git',
-              'Jupyter', 'Stata', 'SPSS', 'Bloomberg Terminal', 'AWS', 'Docker'
+              'Jupyter', 'Stata', 'SPSS', 'Bloomberg Terminal', 'AWS', 'Docker',
             ].map((tech, index) => (
               <motion.span
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.3, delay: 1 + index * 0.05 }}
-                className="px-4 py-2 bg-gradient-to-r from-primary-500/10 to-accent-500/10 
+                className="px-4 py-2 bg-gradient-to-r from-primary-500/10 to-accent-500/10
                          border border-primary-500/30 rounded-full text-sm font-medium
                          text-gray-700 dark:text-gray-300 hover:scale-110 transition-transform"
               >

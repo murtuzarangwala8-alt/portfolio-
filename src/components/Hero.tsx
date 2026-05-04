@@ -6,9 +6,11 @@ import HeroBackground from './HeroBackground';
 const Hero = () => {
   const [showTooltip, setShowTooltip] = useState(false);
   const [showWidget, setShowWidget] = useState(true);
+  // Only load the TradingView widget on desktop (lg breakpoint = 1024px+)
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth >= 1024;
   
   useEffect(() => {
-    if (showWidget) {
+    if (showWidget && isDesktop) {
       // Clear any existing content
       const container = document.getElementById('tradingview-widget-container');
       if (container) {

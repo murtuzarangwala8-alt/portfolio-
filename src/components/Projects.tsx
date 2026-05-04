@@ -90,7 +90,6 @@ const Projects = () => {
       description: "Built a Retrieval-Augmented Generation system for querying financial reports and documents. Integrated LLM with vector database for context-aware responses.",
       tags: ["Python", "LangChain", "OpenAI", "RAG", "Vector DB"],
       category: "AI/ML",
-      // github: "https://github.com/yourusername/rag-assistant", // TODO: Add your GitHub link
     },
     {
       title: "Market Sentiment Analysis Tool",
@@ -103,7 +102,6 @@ const Projects = () => {
       description: "First-order Markov Chain model for predicting gold price movements using historical and live data. Features state discretization and Monte Carlo simulation.",
       tags: ["Python", "Markov Chains", "Time-Series", "Forecasting"],
       category: "Finance",
-      github: "https://github.com/yourusername/xau-predictor", // TODO: Update with actual link
     }
   ];
 
