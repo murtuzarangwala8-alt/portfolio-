@@ -37,16 +37,16 @@ const LOCAL_RULES: { patterns: RegExp[]; response: string }[] = [
     response: "Murtuza holds an MSc in Economics & Data Analysis from the University of Verona, Italy (2023–2026) and a BSc in Computer Science from the University of Mumbai, India (2019–2022)."
   },
   {
-    patterns: [/experience|work|job|career|company|dimitra|motilal|mohamedally/i],
-    response: "Murtuza worked as a Business Analyst at Dimitra International, Berlin (Oct 2025–Jan 2026), Operations & Business Analyst at Mohamedally Akbarally & Co., Mumbai (2019–2021), and Equity Dealer at Motilal Oswal (2020)."
+    patterns: [/experience|work|job|career|company|dimitra|motilal|mohamedally|artane/i],
+    response: "Murtuza is currently an Investment Banking Analyst at Artane Partners, Dublin (Jun 2026–Present). Previously, he worked as a Business Analyst at Dimitra International, Berlin (Oct 2025–Jan 2026), Operations & Business Analyst at Mohamedally Akbarally & Co., Mumbai (2019–2021), and Equity Dealer at Motilal Oswal (2020)."
   },
   {
     patterns: [/project|portfolio|built|created|analysis|gdp|sme|household|markov|rag/i],
     response: "Murtuza's key projects include: Household Financial Market Participation Analysis, SME Growth & Credit Market Analysis, Constant GDP per Capita Analysis (1970–2022), RAG-based Financial Knowledge Assistant, and XAU/USD Markov Chain Predictor."
   },
   {
-    patterns: [/finance|stock|market|trading|equity|investment|financial/i],
-    response: "Murtuza has a strong finance background — from equity trading at Motilal Oswal to econometric research and financial modeling. He specialises in DCF valuation, time-series forecasting, and quantitative analysis."
+    patterns: [/finance|stock|market|trading|equity|investment|financial|ib|banking/i],
+    response: "Murtuza has a strong finance background — currently an Investment Banking Analyst at Artane Partners, and previously an Equity Dealer at Motilal Oswal. He specialises in investment banking, DCF valuation, time-series forecasting, and quantitative analysis."
   },
   {
     patterns: [/machine learning|ml|ai|artificial intelligence|nlp|llm|rag|langchain/i],

@@ -19,6 +19,17 @@ const Experience = () => {
   const { t } = useLanguage();
   const experiences: Experience[] = [
     {
+      role: "Investment Banking Analyst",
+      company: "Artane Partners",
+      location: "Dublin, Ireland",
+      period: "Jun 2026 - Present",
+      responsibilities: [
+        "Supporting a talented investment banking team on cross-border advisory, valuation, and capital-raising transactions",
+        "Assisting in bridging capital flow by connecting the West to investment opportunities across the GCC (Gulf Cooperation Council) region",
+        "Conducting quantitative financial analysis, valuation modeling, and industry research to support deal execution"
+      ]
+    },
+    {
       role: "Business Analyst",
       company: "Dimitra International",
       location: "Berlin, Germany",

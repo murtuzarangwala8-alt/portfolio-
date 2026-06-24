@@ -28,34 +28,6 @@ const AIChat = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // TODO: Replace this with actual API call to your LLM endpoint
-  const getMockResponse = (userMessage: string): string => {
-    const lowerMessage = userMessage.toLowerCase();
-    
-    if (lowerMessage.includes('skill') || lowerMessage.includes('expertise')) {
-      return "Murtuza has expertise in Data Analytics (Python, R, SQL), Quantitative Finance (Econometrics, Time-Series), AI/ML (Machine Learning, LLMs, RAG), and Business Strategy. He combines technical skills with business acumen.";
-    }
-    
-    if (lowerMessage.includes('experience') || lowerMessage.includes('work')) {
-      return "Murtuza has worked as a Business Analyst at Dimitra International, Operations & Business Analyst at Mohamedally Akbarally & Co., and Equity Dealer at Motilal Oswal. He has experience in data analysis, financial modeling, and strategic planning.";
-    }
-    
-    if (lowerMessage.includes('education') || lowerMessage.includes('study')) {
-      return "Murtuza holds an MSc in Economics & Data Analysis from the University of Verona, Italy, and a BSc in Computer Science from the University of Mumbai, India.";
-    }
-    
-    if (lowerMessage.includes('project')) {
-      return "Some notable projects include: Household Financial Market Participation Analysis, SME Growth & Credit Market Analysis, RAG-based Financial Knowledge Assistant, and XAU/USD Markov Chain Predictor. Check out the Projects section for more details!";
-    }
-    
-    if (lowerMessage.includes('contact') || lowerMessage.includes('reach')) {
-      return "You can reach Murtuza at murtuzarangwala8@gmail.com or connect on LinkedIn at linkedin.com/in/murtaza-rangwala-856456102. Feel free to scroll down to the Contact section!";
-    }
-    
-    return "That's a great question! I can tell you about Murtuza's skills, experience, education, projects, or how to contact him. What would you like to know?";
-  };
-
-  // TODO: Replace this function with actual API call
   const sendMessage = async (userMessage: string) => {
     if (!userMessage.trim()) return;
 
@@ -69,45 +41,31 @@ const AIChat = () => {
     setInput('');
     setIsLoading(true);
 
-    // Simulate API delay
-    setTimeout(() => {
-      const assistantMsg: Message = {
-        role: 'assistant',
-        content: getMockResponse(userMessage),
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, assistantMsg]);
-      setIsLoading(false);
-      scrollToBottom();
-    }, 1000);
-
-    /* 
-    TODO: Replace the above with actual API call like this:
-    
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          message: userMessage,
-          history: messages 
-        })
+        body: JSON.stringify({ message: userMessage })
       });
-      
+
       const data = await response.json();
       const assistantMsg: Message = {
         role: 'assistant',
-        content: data.response,
+        content: data.response || data.error || 'Sorry, I could not generate a response.',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, assistantMsg]);
     } catch (error) {
       console.error('Error sending message:', error);
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: 'Sorry, the AI assistant is temporarily unavailable.',
+        timestamp: new Date()
+      }]);
     } finally {
       setIsLoading(false);
       scrollToBottom();
     }
-    */
   };
 
   const handleSubmit = (e: React.FormEvent) => {
