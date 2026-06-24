@@ -11,6 +11,13 @@ const About = () => {
 
   const timeline = [
     {
+      icon: <Briefcase className="w-6 h-6" />,
+      title: t.about.ib,
+      subtitle: t.about.ibSub,
+      description: t.about.ibDesc,
+      year: "2026-Present"
+    },
+    {
       icon: <GraduationCap className="w-6 h-6" />,
       title: t.about.msc,
       subtitle: t.about.mscSub,
@@ -106,7 +113,7 @@ const About = () => {
           <h3 className="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-white">
             {t.about.journey}
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
             {timeline.map((item, index) => (
               <motion.div
                 key={index}
