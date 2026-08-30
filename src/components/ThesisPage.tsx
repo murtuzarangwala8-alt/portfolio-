@@ -111,7 +111,7 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
             <span>Executive Abstract</span>
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            This Master&apos;s Thesis evaluates whether advanced deep learning architectures improve cross-sectional stock return forecasting over classic linear baseline models. Using point-in-time Bloomberg filings and price histories across 500 S&amp;P 500 constituent stocks from 2015 to 2024, I introduce the <strong className="text-white font-semibold">Temporal Fusion Deep Multimodal Gated Attention (TFDMGA)</strong> network. The system combines Causal 1D TCN encoders with Sequential Ring Attention and 3-Way Macro Dynamic Gating. Under realistic 1-day execution delays and 10 bps microstructure friction, TFDMGA achieves an out-of-sample Daily IC of <strong className="text-emerald-400 font-mono">+0.0348</strong> (ICIR 3.12) and grows a $1,000 USD account deposit to <strong className="text-emerald-400 font-mono">$6,482.10 USD</strong>.
+            This Master&apos;s Thesis evaluates whether advanced deep learning architectures improve cross-sectional stock return forecasting over classic linear baseline models. Using Yahoo Finance market data and point-in-time SEC filings across 500 S&amp;P 500 constituent stocks from 2015 to 2024, I introduce the <strong className="text-white font-semibold">Temporal Fusion Deep Multimodal Gated Attention (TFDMGA)</strong> network. The system combines Causal 1D TCN encoders with Sequential Ring Attention and 3-Way Macro Dynamic Gating. Under realistic 1-day execution delays and 10 bps microstructure friction, TFDMGA achieves an out-of-sample Daily IC of <strong className="text-emerald-400 font-mono">+0.0348</strong> (ICIR 3.12) and grows a $1,000 USD account deposit to <strong className="text-emerald-400 font-mono">$6,482.10 USD</strong>.
           </p>
         </div>
 
@@ -171,7 +171,7 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
             <div className="p-5 rounded-xl bg-gray-800/60 border border-gray-800 space-y-2">
               <div className="flex items-center gap-3 text-blue-400 font-bold">
                 <div className="w-7 h-7 rounded bg-blue-950 flex items-center justify-center font-mono text-xs border border-blue-800">01</div>
-                <h4>Point-in-Time Bloomberg Filing Alignment</h4>
+                <h4>Point-in-Time SEC Filing &amp; Yahoo Finance Alignment</h4>
               </div>
               <p className="text-xs text-gray-300 leading-relaxed">
                 Features update strictly on SEC publication timestamps (<code className="text-blue-400 font-mono">earnings_announcement_date</code>) rather than fiscal quarter ends. Fundamentals expire after 90 days.
@@ -231,7 +231,7 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
             <div className="text-gray-500">[2026-08-28 13:30:00 UTC] Initializing Alpaca Autonomous Options Trader v2.4...</div>
             <div className="text-blue-400">[INFO] Authenticated with Alpaca Paper API (Key ID: PK****************)</div>
             <div className="text-gray-400">[INFO] Loading TFDMGA Model Checkpoint (Fold 5: 2015-2024 Weight Weights)</div>
-            <div className="text-cyan-300">[DATA] Ingested 2,516 cross-sections for 500 constituent tickers. Point-in-time Bloomberg fundamental check passed.</div>
+            <div className="text-cyan-300">[DATA] Ingested 2,516 cross-sections for 500 constituent tickers. Point-in-time SEC &amp; Yahoo Finance check passed.</div>
             <div className="text-emerald-400">[SIGNAL] Daily Cross-Sectional Rank Inference Completed:</div>
             <div className="pl-4 text-emerald-300">1. ACN  | Rank IC: +0.0412 | TFDMGA Score: 0.892 (BUY Q5)</div>
             <div className="pl-4 text-emerald-300">2. MA   | Rank IC: +0.0385 | TFDMGA Score: 0.864 (BUY Q5)</div>

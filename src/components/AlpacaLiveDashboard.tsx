@@ -174,7 +174,7 @@ const AlpacaLiveDashboard = () => {
             <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-800 space-y-2">
               <div className="flex items-center gap-3 text-primary-500">
                 <div className="w-7 h-7 rounded-lg bg-primary-950/80 flex items-center justify-center font-mono font-bold text-xs border border-primary-800">01</div>
-                <h4 className="font-bold text-gray-900 dark:text-white text-sm">Point-in-Time Bloomberg Filing Alignment</h4>
+                <h4 className="font-bold text-gray-900 dark:text-white text-sm">Point-in-Time SEC Filing &amp; Yahoo Finance Alignment</h4>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
                 Features update strictly on SEC publication timestamps (<code className="text-primary-400 font-mono">earnings_announcement_date</code>) rather than fiscal quarter ends, eliminating lookahead bias. Fundamentals expire after 90 days to prevent stale ratios.
@@ -205,7 +205,7 @@ const AlpacaLiveDashboard = () => {
                 <h4 className="font-bold text-gray-900 dark:text-white text-sm">Microstructure Frictions &amp; 2:1 TPSL</h4>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                Signals generated at close of day <span className="font-mono text-gray-900 dark:text-white">t</span> execute at open of day <span className="font-mono text-gray-900 dark:text-white">t+1</span> (1-day delay). Every trade deducts 10 bps friction, paired with a 2:1 Take-Profit/Stop-Loss (+4% TP / -2% SL) circuit breaker.
+                Signals generated at close of day <span className="font-mono text-gray-900 dark:text-white">$t$</span> execute at open of day <span className="font-mono text-gray-900 dark:text-white">$t+1$</span> (1-day delay). Every trade deducts 10 bps friction, paired with a 2:1 Take-Profit/Stop-Loss (+4% TP / -2% SL) circuit breaker.
               </p>
               <div className="text-2xs font-mono text-gray-500 dark:text-gray-400 pt-1">
                 • $1,000 USD deposit compounds to $6,482.10 net of 10 bps fees
@@ -250,7 +250,7 @@ const AlpacaLiveDashboard = () => {
             <div className="text-gray-500">[2026-08-28 13:30:00 UTC] Initializing Alpaca Autonomous Options Trader v2.4...</div>
             <div className="text-blue-400">[INFO] Authenticated with Alpaca Paper API (Key ID: PK****************)</div>
             <div className="text-gray-400">[INFO] Loading TFDMGA Model Checkpoint (Fold 5: 2015-2024 Weight Weights)</div>
-            <div className="text-cyan-300">[DATA] Ingested 2,516 cross-sections for 500 constituent tickers. Point-in-time Bloomberg fundamental check passed.</div>
+            <div className="text-cyan-300">[DATA] Ingested 2,516 cross-sections for 500 constituent tickers. Point-in-time SEC &amp; Yahoo Finance check passed.</div>
             <div className="text-emerald-400">[SIGNAL] Daily Cross-Sectional Rank Inference Completed:</div>
             <div className="pl-4 text-emerald-300">1. ACN  | Rank IC: +0.0412 | TFDMGA Score: 0.892 (BUY Q5)</div>
             <div className="pl-4 text-emerald-300">2. MA   | Rank IC: +0.0385 | TFDMGA Score: 0.864 (BUY Q5)</div>
