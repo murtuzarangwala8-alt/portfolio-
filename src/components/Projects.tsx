@@ -14,11 +14,7 @@ interface Project {
   category: string;
 }
 
-interface ProjectsProps {
-  onOpenThesis?: () => void;
-}
-
-const Projects = ({ onOpenThesis }: ProjectsProps = {}) => {
+const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { t } = useLanguage();
@@ -264,18 +260,12 @@ const ProjectCard = ({ project, index, isInView }: { project: Project; index: nu
             {project.demo && (
               <a
                 href={project.demo}
-                target={project.demo.startsWith('#') ? '_self' : '_blank'}
+                target="_blank"
                 rel="noopener noreferrer"
-                onClick={e => {
-                  e.stopPropagation();
-                  if (project.demo === '#live-trading' && onOpenThesis) {
-                    e.preventDefault();
-                    onOpenThesis();
-                  }
-                }}
+                onClick={e => e.stopPropagation()}
                 className="flex items-center gap-1.5 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-full text-sm font-medium transition-all"
               >
-                <ExternalLink size={14} /> {project.demo === '#live-trading' ? 'Explore Page' : t.projects.demo}
+                <ExternalLink size={14} /> {t.projects.demo}
               </a>
             )}
           </div>

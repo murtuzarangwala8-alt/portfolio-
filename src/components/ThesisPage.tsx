@@ -1,5 +1,4 @@
-import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Download, Activity, TrendingUp, Award, ShieldCheck, Cpu, Terminal, FileText, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Activity, TrendingUp, Award, ShieldCheck, Cpu, Terminal, FileText } from 'lucide-react';
 
 interface ThesisPageProps {
   onBack: () => void;
