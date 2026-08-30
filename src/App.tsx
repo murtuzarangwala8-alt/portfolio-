@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import AlpacaLiveDashboard from './components/AlpacaLiveDashboard';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
@@ -27,6 +28,7 @@ function App() {
             <About />
             <Skills />
             <Projects />
+            <AlpacaLiveDashboard />
             <Experience />
             <Contact />
           </main>
@@ -40,6 +42,7 @@ function App() {
                   { label: 'About',      href: '#about' },
                   { label: 'Skills',     href: '#skills' },
                   { label: 'Projects',   href: '#projects' },
+                  { label: 'Live Bot',   href: '#live-trading' },
                   { label: 'Experience', href: '#experience' },
                   { label: 'Contact',    href: '#contact' },
                 ].map((link) => (

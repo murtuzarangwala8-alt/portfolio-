@@ -22,6 +22,14 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      title: "Live Alpaca Quantitative Trading Engine (TFDMGA)",
+      description: "Autonomous 24/7 cloud paper trading engine executing my Master's Thesis research model on S&P 500 equities. Features point-in-time SEC Bloomberg filing alignment, 1-day execution lag, 10 bps friction, and a 2:1 Take-Profit/Stop-Loss risk overlay. Peak equity: $105,151.23 (+5.15% return vs -0.16% S&P 500).",
+      tags: ["PyTorch", "Python", "Alpaca API", "TFDMGA", "Deep Learning", "GitHub Actions"],
+      category: "AI/ML",
+      github: "https://github.com/murtuzarangwala8-alt/thesis-stock-prediction",
+      demo: "#live-trading",
+    },
+    {
       title: "Personal Portfolio Website",
       description: "Modern, responsive portfolio website built with React, TypeScript, and TailwindCSS. Features real-time S&P 500 widget, AI trading chatbot, dark/light theme, and smooth animations with Framer Motion.",
       tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion", "Vite"],
