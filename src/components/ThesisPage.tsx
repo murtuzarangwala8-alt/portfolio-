@@ -66,7 +66,7 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
           </div>
         </div>
 
-        <!-- Live Financial Metric Cards -->
+        {/* Live Financial Metric Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-gray-400">
