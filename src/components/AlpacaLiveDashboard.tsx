@@ -248,7 +248,7 @@ const AlpacaLiveDashboard = () => {
 
           <div className="font-mono text-xs text-gray-300 h-56 overflow-y-auto space-y-1.5">
             <div className="text-gray-500">[2026-08-28 13:30:00 UTC] Initializing Alpaca Autonomous Options Trader v2.4...</div>
-            <div className="text-blue-400">[INFO] Authenticated with Alpaca Paper API (Key ID: PK7CTKCFHUIL...)</div>
+            <div className="text-blue-400">[INFO] Authenticated with Alpaca Paper API (Key ID: PK****************)</div>
             <div className="text-gray-400">[INFO] Loading TFDMGA Model Checkpoint (Fold 5: 2015-2024 Weight Weights)</div>
             <div className="text-cyan-300">[DATA] Ingested 2,516 cross-sections for 500 constituent tickers. Point-in-time Bloomberg fundamental check passed.</div>
             <div className="text-emerald-400">[SIGNAL] Daily Cross-Sectional Rank Inference Completed:</div>
