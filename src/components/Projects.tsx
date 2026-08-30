@@ -22,6 +22,14 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
+      title: "Master's Thesis",
+      description: "Machine Learning Stock Return Prediction & Live Alpaca Execution Engine. Master's Thesis research at the University of Verona (Dept. of Economics). Implements Temporal Fusion Deep Multimodal Gated Attention (TFDMGA) on S&P 500 equities with 59 features, point-in-time SEC Bloomberg filing alignment, 10 bps friction, and live 24/7 Alpaca cloud execution.",
+      tags: ["PyTorch", "Python", "Alpaca API", "TFDMGA", "Deep Learning", "GitHub Actions"],
+      category: "Finance",
+      github: "https://github.com/murtuzarangwala8-alt/thesis-stock-prediction",
+      demo: "https://www.murtuza.eu/thesis.html",
+    },
+    {
       title: "Personal Portfolio Website",
       description: "Modern, responsive portfolio website built with React, TypeScript, and TailwindCSS. Features real-time S&P 500 widget, AI trading chatbot, dark/light theme, and smooth animations with Framer Motion.",
       tags: ["React", "TypeScript", "TailwindCSS", "Framer Motion", "Vite"],
