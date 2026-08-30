@@ -11,6 +11,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import IntroAnimation from './components/IntroAnimation';
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const [introComplete, setIntroComplete] = useState(false);
@@ -31,6 +32,7 @@ function App() {
             <Contact />
           </main>
           <FloatingAIChat />
+          <Analytics />
           <footer className="bg-gray-900 dark:bg-black py-10 text-center text-gray-400">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               {/* Nav links */}
