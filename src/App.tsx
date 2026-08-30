@@ -34,7 +34,6 @@ function App() {
                 <About />
                 <Skills />
                 <Projects onOpenThesis={() => setCurrentPage('thesis')} />
-                <AlpacaLiveDashboard />
                 <Experience />
                 <Contact />
               </main>
