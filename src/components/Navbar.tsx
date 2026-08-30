@@ -11,7 +11,11 @@ const LANGUAGES: { code: Language; flag: string; label: string }[] = [
   { code: 'it', flag: '🇮🇹', label: 'IT' },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  onOpenThesis?: () => void;
+}
+
+const Navbar = ({ onOpenThesis }: NavbarProps = {}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -29,12 +33,17 @@ const Navbar = () => {
     { name: t.nav.about, href: '#about' },
     { name: t.nav.skills, href: '#skills' },
     { name: t.nav.projects, href: '#projects' },
-    { name: 'Live Bot', href: '#live-trading' },
+    { name: 'Thesis & Live Bot', href: '#live-trading' },
     { name: t.nav.experience, href: '#experience' },
     { name: t.nav.contact, href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
+    if (href === '#live-trading' && onOpenThesis) {
+      onOpenThesis();
+      setIsOpen(false);
+      return;
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     setIsOpen(false);
   };
