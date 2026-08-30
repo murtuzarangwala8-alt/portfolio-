@@ -3,8 +3,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import AlpacaLiveDashboard from './components/AlpacaLiveDashboard';
-import ThesisPage from './components/ThesisPage';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
@@ -16,7 +14,6 @@ import { useState } from 'react';
 
 function App() {
   const [introComplete, setIntroComplete] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'main' | 'thesis'>('main');
 
   return (
     <ThemeProvider>
@@ -24,21 +21,15 @@ function App() {
         {!introComplete && <IntroAnimation onComplete={() => setIntroComplete(true)} />}
         <div style={{ visibility: introComplete ? 'visible' : 'hidden' }} className="relative overflow-x-hidden w-full">
           <CustomCursor />
-          {currentPage === 'thesis' ? (
-            <ThesisPage onBack={() => setCurrentPage('main')} />
-          ) : (
-            <>
-              <Navbar onOpenThesis={() => setCurrentPage('thesis')} />
-              <main>
-                <Hero />
-                <About />
-                <Skills />
-                <Projects onOpenThesis={() => setCurrentPage('thesis')} />
-                <Experience />
-                <Contact />
-              </main>
-            </>
-          )}
+          <Navbar />
+          <main>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Contact />
+          </main>
           <FloatingAIChat />
           <footer className="bg-gray-900 dark:bg-black py-10 text-center text-gray-400">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
