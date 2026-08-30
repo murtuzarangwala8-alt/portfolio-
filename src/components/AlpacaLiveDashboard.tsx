@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
 import { useInView } from 'framer-motion';
-import { TrendingUp, ShieldCheck, Activity, Award, CheckCircle, Terminal, ExternalLink, Cpu } from 'lucide-react';
+import { TrendingUp, ShieldCheck, Activity, Award, CheckCircle, Terminal, Cpu } from 'lucide-react';
 
 const AlpacaLiveDashboard = () => {
   const ref = useRef(null);
@@ -16,13 +16,13 @@ const AlpacaLiveDashboard = () => {
   ];
 
   return (
-    <section id="live-trading" ref={ref} class="py-20 bg-gray-50 dark:bg-black/80 transition-colors duration-300 relative overflow-hidden">
-      <!-- Background Glow -->
+    <section id="live-trading" ref={ref} className="py-20 bg-gray-50 dark:bg-black/80 transition-colors duration-300 relative overflow-hidden">
+      {/* Background Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
         
-        <!-- Header -->
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -35,22 +35,22 @@ const AlpacaLiveDashboard = () => {
           </div>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight">
-            Live Alpaca <span class="gradient-text">Quantitative Trading Bot</span>
+            Live Alpaca <span className="gradient-text">Quantitative Trading Bot</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-sm sm:text-base">
-            Real-time paper trading account tracking of my Master's Thesis research model: 
-            <strong className="text-primary-500 dark:text-primary-400 font-semibold"> Temporal Fusion Deep Multimodal Gated Attention (TFDMGA)</strong> on S&P 500 equities.
+            Real-time paper trading account tracking of my Master&apos;s Thesis research model: 
+            <strong className="text-primary-500 dark:text-primary-400 font-semibold"> Temporal Fusion Deep Multimodal Gated Attention (TFDMGA)</strong> on S&amp;P 500 equities.
           </p>
         </motion.div>
 
-        <!-- Metric Stat Cards -->
+        {/* Metric Stat Cards */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          <!-- Card 1 -->
+          {/* Card 1 */}
           <div className="glass-card rounded-2xl p-6 space-y-2 border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 shadow-lg">
             <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400">
               <span>PEAK PORTFOLIO VALUE</span>
@@ -63,7 +63,7 @@ const AlpacaLiveDashboard = () => {
             </div>
           </div>
 
-          <!-- Card 2 -->
+          {/* Card 2 */}
           <div className="glass-card rounded-2xl p-6 space-y-2 border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 shadow-lg">
             <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400">
               <span>STRATEGY RETURN</span>
@@ -71,25 +71,25 @@ const AlpacaLiveDashboard = () => {
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-mono">+5.15%</div>
             <div className="text-xs text-gray-500 dark:text-gray-400 flex items-center justify-between">
-              <span>S&P 500 Index: <strong className="text-red-400">-0.16%</strong></span>
-              <span class="text-xs text-emerald-500 font-mono">Net 10 bps</span>
+              <span>S&amp;P 500 Index: <strong className="text-red-400">-0.16%</strong></span>
+              <span className="text-xs text-emerald-500 font-mono">Net 10 bps</span>
             </div>
           </div>
 
-          <!-- Card 3 -->
+          {/* Card 3 */}
           <div className="glass-card rounded-2xl p-6 space-y-2 border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 shadow-lg">
             <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400">
               <span>NET STRATEGY ALPHA</span>
               <Award className="w-4 h-4 text-yellow-500" />
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-yellow-500 font-mono">+5.31%</div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">Outperformance over S&P 500</div>
+            <div className="text-xs text-gray-500 dark:text-gray-400">Outperformance over S&amp;P 500</div>
           </div>
 
-          <!-- Card 4 -->
+          {/* Card 4 */}
           <div className="glass-card rounded-2xl p-6 space-y-2 border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 shadow-lg">
             <div className="flex items-center justify-between text-xs font-mono text-gray-500 dark:text-gray-400">
-              <span>UNREALIZED HOLDINGS P&L</span>
+              <span>UNREALIZED HOLDINGS P&amp;L</span>
               <ShieldCheck className="w-4 h-4 text-cyan-500" />
             </div>
             <div className="text-2xl sm:text-3xl font-extrabold text-cyan-500 font-mono">+$4,823.62</div>
@@ -100,7 +100,7 @@ const AlpacaLiveDashboard = () => {
           </div>
         </motion.div>
 
-        <!-- Open Positions Table -->
+        {/* Open Positions Table */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -130,7 +130,7 @@ const AlpacaLiveDashboard = () => {
                   <th className="py-3 px-4 text-right">Shares</th>
                   <th className="py-3 px-4 text-right">Cost Basis</th>
                   <th className="py-3 px-4 text-right">Current Value</th>
-                  <th className="py-3 px-4 text-right">Unrealized P&L</th>
+                  <th className="py-3 px-4 text-right">Unrealized P&amp;L</th>
                   <th className="py-3 px-4 text-right">Return (%)</th>
                 </tr>
               </thead>
@@ -151,7 +151,7 @@ const AlpacaLiveDashboard = () => {
           </div>
         </motion.div>
 
-        <!-- "What We Are Truly Doing" — Quantitative Methodology -->
+        {/* "What We Are Truly Doing" — Quantitative Methodology */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -161,7 +161,7 @@ const AlpacaLiveDashboard = () => {
           <div className="border-b border-gray-200 dark:border-gray-800 pb-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-yellow-950/60 border border-yellow-500/30 text-yellow-400 text-xs font-mono uppercase tracking-wider mb-2">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Strategy & Quantitative Rigor</span>
+              <span>Strategy &amp; Quantitative Rigor</span>
             </div>
             <h3 className="text-2xl font-extrabold text-gray-900 dark:text-white">What We Are Truly Doing: <span className="gradient-text">Quantitative Methodology</span></h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 max-w-4xl pt-1">
@@ -170,7 +170,7 @@ const AlpacaLiveDashboard = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Pillar 1 -->
+            {/* Pillar 1 */}
             <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-800 space-y-2">
               <div className="flex items-center gap-3 text-primary-500">
                 <div className="w-7 h-7 rounded-lg bg-primary-950/80 flex items-center justify-center font-mono font-bold text-xs border border-primary-800">01</div>
@@ -184,42 +184,42 @@ const AlpacaLiveDashboard = () => {
               </div>
             </div>
 
-            <!-- Pillar 2 -->
+            {/* Pillar 2 */}
             <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-800 space-y-2">
               <div className="flex items-center gap-3 text-cyan-500">
                 <div className="w-7 h-7 rounded-lg bg-cyan-950/80 flex items-center justify-center font-mono font-bold text-xs border border-cyan-800">02</div>
                 <h4 className="font-bold text-gray-900 dark:text-white text-sm">TFDMGA Deep Sequence Architecture</h4>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                Combines Causal 1D TCN encoders (<code className="text-cyan-400 font-mono">R=15d</code>) with Sequential Ring Attention and 3-Way Macro Dynamic Gating (<code class="text-cyan-400 font-mono">&tau;=0.50</code>) to dynamically reweight modalities across market regimes.
+                Combines Causal 1D TCN encoders (<code className="text-cyan-400 font-mono">R=15d</code>) with Sequential Ring Attention and 3-Way Macro Dynamic Gating (<code className="text-cyan-400 font-mono">&tau;=0.50</code>) to dynamically reweight modalities across market regimes.
               </p>
               <div className="text-2xs font-mono text-gray-500 dark:text-gray-400 pt-1">
                 • Out-of-sample IC: +0.0348 • ICIR: 3.12 • DM Stat: 2.41 (p=0.016 vs LSTM)
               </div>
             </div>
 
-            <!-- Pillar 3 -->
+            {/* Pillar 3 */}
             <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-800 space-y-2">
               <div className="flex items-center gap-3 text-emerald-500">
                 <div className="w-7 h-7 rounded-lg bg-emerald-950/80 flex items-center justify-center font-mono font-bold text-xs border border-emerald-800">03</div>
-                <h4 className="font-bold text-gray-900 dark:text-white text-sm">Microstructure Frictions & 2:1 TPSL</h4>
+                <h4 className="font-bold text-gray-900 dark:text-white text-sm">Microstructure Frictions &amp; 2:1 TPSL</h4>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                Signals generated at close of day <span class="font-mono text-gray-900 dark:text-white">$t$</span> execute at open of day <span class="font-mono text-gray-900 dark:text-white">$t+1$</span> (1-day delay). Every trade deducts 10 bps friction, paired with a 2:1 Take-Profit/Stop-Loss (+4% TP / -2% SL) circuit breaker.
+                Signals generated at close of day <span className="font-mono text-gray-900 dark:text-white">t</span> execute at open of day <span className="font-mono text-gray-900 dark:text-white">t+1</span> (1-day delay). Every trade deducts 10 bps friction, paired with a 2:1 Take-Profit/Stop-Loss (+4% TP / -2% SL) circuit breaker.
               </p>
               <div className="text-2xs font-mono text-gray-500 dark:text-gray-400 pt-1">
                 • $1,000 USD deposit compounds to $6,482.10 net of 10 bps fees
               </div>
             </div>
 
-            <!-- Pillar 4 -->
+            {/* Pillar 4 */}
             <div className="p-5 rounded-xl bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-800 space-y-2">
               <div className="flex items-center gap-3 text-yellow-500">
                 <div className="w-7 h-7 rounded-lg bg-yellow-950/80 flex items-center justify-center font-mono font-bold text-xs border border-yellow-800">04</div>
-                <h4 className="font-bold text-gray-900 dark:text-white text-sm">Fama-French Spanning & EMH Proof</h4>
+                <h4 className="font-bold text-gray-900 dark:text-white text-sm">Fama-French Spanning &amp; EMH Proof</h4>
               </div>
               <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-                Fama-French 5-factor regressions yield a net strategy alpha of <span class="font-mono text-gray-900 dark:text-white">&alpha; = -0.18%</span> (<span class="font-mono text-gray-900 dark:text-white">p = 0.976</span>). Because net alpha is zero, 100% of strategy returns represent dynamic factor risk compensation (<span class="font-mono text-gray-900 dark:text-white">RMW &beta; = +0.512</span>), matching Fama's Efficient Market Hypothesis.
+                Fama-French 5-factor regressions yield a net strategy alpha of <span className="font-mono text-gray-900 dark:text-white">&alpha; = -0.18%</span> (<span className="font-mono text-gray-900 dark:text-white">p = 0.976</span>). Because net alpha is zero, 100% of strategy returns represent dynamic factor risk compensation (<span className="font-mono text-gray-900 dark:text-white">RMW &beta; = +0.512</span>), matching Fama&apos;s Efficient Market Hypothesis.
               </p>
               <div className="text-2xs font-mono text-gray-500 dark:text-gray-400 pt-1">
                 • Machine Learning acts as a Dynamic Factor Allocation Engine
@@ -228,7 +228,7 @@ const AlpacaLiveDashboard = () => {
           </div>
         </motion.div>
 
-        <!-- 24/7 Cloud Bot Terminal Logs -->
+        {/* 24/7 Cloud Bot Terminal Logs */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -257,9 +257,9 @@ const AlpacaLiveDashboard = () => {
             <div className="pl-4 text-emerald-300">3. XOM  | Rank IC: +0.0361 | TFDMGA Score: 0.841 (BUY Q5)</div>
             <div className="pl-4 text-emerald-300">4. ADBE | Rank IC: +0.0349 | TFDMGA Score: 0.825 (BUY Q5)</div>
             <div className="text-yellow-400">[EXEC] Executing 1-Day Lag Execution Protocol (Order queued at Close t, Executed at Open t+1)...</div>
-            <div className="text-emerald-400">[ALPACA] REST POST /v2/orders -> ACN | Qty: 172 | Side: BUY | Status: FILLED @ $189.88</div>
-            <div className="text-emerald-400">[ALPACA] REST POST /v2/orders -> MA  | Qty: 52  | Side: BUY | Status: FILLED @ $591.24</div>
-            <div className="text-emerald-400">[ALPACA] REST POST /v2/orders -> XOM | Qty: 185 | Side: BUY | Status: FILLED @ $153.50</div>
+            <div className="text-emerald-400">[ALPACA] REST POST /v2/orders -&gt; ACN | Qty: 172 | Side: BUY | Status: FILLED @ $189.88</div>
+            <div className="text-emerald-400">[ALPACA] REST POST /v2/orders -&gt; MA  | Qty: 52  | Side: BUY | Status: FILLED @ $591.24</div>
+            <div className="text-emerald-400">[ALPACA] REST POST /v2/orders -&gt; XOM | Qty: 185 | Side: BUY | Status: FILLED @ $153.50</div>
             <div className="text-blue-400">[RISK] 2:1 Take-Profit/Stop-Loss (+4% / -2%) Circuit Breaker Active. Account Equity Peak: $105,151.23 USD.</div>
             <div className="text-gray-500">[2026-08-29 00:00:00 UTC] 24/7 Cloud Cycle Complete. Zero errors. Status: OK.</div>
           </div>
