@@ -57,7 +57,9 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
           <div className="flex flex-wrap gap-4 text-xs font-mono text-gray-400 pt-2 border-t border-gray-800/80">
             <span><strong>Author:</strong> Murtuza Yusuf Rangwala</span>
             <span>•</span>
-            <span><strong>Supervisor:</strong> Prof.ssa Giuseppina Chesini</span>
+            <span><strong>Relatrice:</strong> Prof.ssa Giuseppina Chesini</span>
+            <span>•</span>
+            <span><strong>Correlatrice:</strong> Prof.ssa Laura Chiaramonte</span>
             <span>•</span>
             <span><strong>Department:</strong> Department of Economics</span>
             <span>•</span>
