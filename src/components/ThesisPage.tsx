@@ -6,11 +6,13 @@ interface ThesisPageProps {
 
 const ThesisPage = ({ onBack }: ThesisPageProps) => {
   const positions = [
-    { symbol: 'ACN', name: 'Accenture plc', qty: 172, cost: '$29,243.34', value: '$32,612.92', pnl: '+$3,369.58', pnlPct: '+11.52%', isGain: true },
-    { symbol: 'MA', name: 'Mastercard Inc.', qty: 52, cost: '$30,125.91', value: '$30,955.60', pnl: '+$829.69', pnlPct: '+2.75%', isGain: true },
-    { symbol: 'XOM', name: 'Exxon Mobil Corp.', qty: 185, cost: '$28,397.12', value: '$28,991.35', pnl: '+$594.23', pnlPct: '+2.09%', isGain: true },
-    { symbol: 'ADBE', name: 'Adobe Inc.', qty: 3, cost: '$837.97', value: '$874.56', pnl: '+$36.59', pnlPct: '+4.37%', isGain: true },
-    { symbol: 'MRK', name: 'Merck & Co., Inc.', qty: 3, cost: '$451.51', value: '$445.05', pnl: '-$6.46', pnlPct: '-1.43%', isGain: false }
+    { symbol: 'ACN', name: 'Accenture plc', qty: 173, cost: '$170.13', value: '$32,828.48', pnl: '+$3,396.42', pnlPct: '+11.54%', isGain: true },
+    { symbol: 'MA', name: 'Mastercard Inc.', qty: 52, cost: '$579.34', value: '$30,644.12', pnl: '+$518.21', pnlPct: '+1.72%', isGain: true },
+    { symbol: 'XOM', name: 'Exxon Mobil Corp.', qty: 185, cost: '$153.50', value: '$29,802.06', pnl: '+$1,404.93', pnlPct: '+4.95%', isGain: true },
+    { symbol: 'ADBE', name: 'Adobe Inc.', qty: 4, cost: '$281.74', value: '$1,173.20', pnl: '+$46.23', pnlPct: '+4.10%', isGain: true },
+    { symbol: 'CRM', name: 'Salesforce Inc.', qty: 1, cost: '$256.02', value: '$258.40', pnl: '+$2.38', pnlPct: '+0.93%', isGain: true },
+    { symbol: 'MSFT', name: 'Microsoft Corp.', qty: 1, cost: '$509.55', value: '$507.50', pnl: '-$2.05', pnlPct: '-0.40%', isGain: false },
+    { symbol: 'MRK', name: 'Merck & Co., Inc.', qty: 4, cost: '$149.53', value: '$591.04', pnl: '-$7.09', pnlPct: '-1.19%', isGain: false }
   ];
 
   return (
@@ -101,8 +103,8 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
               <span>UNREALIZED HOLDINGS P&amp;L</span>
               <ShieldCheck className="w-4 h-4 text-cyan-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">+$4,823.62</div>
-            <div className="text-xs text-emerald-400 font-semibold">+5.41% Net Gain Across Holdings</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">+$5,358.32</div>
+            <div className="text-xs text-emerald-400 font-semibold">+5.92% Net Gain Across Holdings</div>
           </div>
         </div>
 
@@ -127,7 +129,7 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
               </h3>
               <p className="text-xs text-gray-400 font-mono">Real-time long portfolio positions selected by TFDMGA rank correlation engine</p>
             </div>
-            <span className="px-3 py-1 rounded bg-emerald-950 text-emerald-400 text-xs font-mono border border-emerald-800">5 Active Holdings</span>
+            <span className="px-3 py-1 rounded bg-emerald-950 text-emerald-400 text-xs font-mono border border-emerald-800">7 Active Holdings</span>
           </div>
 
           <div className="overflow-x-auto">
