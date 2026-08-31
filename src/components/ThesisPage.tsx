@@ -73,29 +73,29 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-gray-400">
-              <span>PEAK PORTFOLIO VALUE</span>
+              <span>CURRENT PORTFOLIO EQUITY</span>
               <Activity className="w-4 h-4 text-blue-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">$105,151.23</div>
-            <div className="text-xs text-emerald-400 font-semibold">+$5,151.23 Net Gain (vs $100k Base)</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">$84,290.52</div>
+            <div className="text-xs text-cyan-400 font-semibold">Buying Power: $222,196.32</div>
           </div>
 
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-gray-400">
-              <span>STRATEGY CUMULATIVE RETURN</span>
-              <TrendingUp className="w-4 h-4 text-emerald-400" />
+              <span>ALPACA ACCOUNT RETURN</span>
+              <TrendingUp className="w-4 h-4 text-red-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">+5.15%</div>
-            <div className="text-xs text-gray-400">S&amp;P 500 Index: <strong className="text-red-400">-0.16%</strong></div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-red-400 font-mono">-19.84%</div>
+            <div className="text-xs text-gray-400">Peak High-Water Mark: <strong className="text-emerald-400">$105,151.23</strong></div>
           </div>
 
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
             <div className="flex items-center justify-between text-xs font-mono text-gray-400">
-              <span>NET STRATEGY ALPHA</span>
+              <span>LONG PORTFOLIO VALUE</span>
               <Award className="w-4 h-4 text-yellow-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-yellow-400 font-mono">+5.31%</div>
-            <div className="text-xs text-gray-400">Outperformance over S&amp;P 500</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-yellow-400 font-mono">$95,804.80</div>
+            <div className="text-xs text-gray-400">7 Active Long Stock Holdings</div>
           </div>
 
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
