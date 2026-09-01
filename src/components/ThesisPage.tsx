@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowLeft, ExternalLink, Activity, TrendingUp, Award, ShieldCheck, Cpu, FileText } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Activity, TrendingUp, Award, ShieldCheck, Cpu, FileText, Terminal } from 'lucide-react';
 
 interface ThesisPageProps {
   onBack: () => void;
