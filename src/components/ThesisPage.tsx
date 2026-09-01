@@ -1,19 +1,119 @@
-import { ArrowLeft, ExternalLink, Activity, TrendingUp, Award, ShieldCheck, Cpu, Terminal, FileText } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowLeft, ExternalLink, Activity, TrendingUp, Award, ShieldCheck, Cpu, FileText } from 'lucide-react';
 
 interface ThesisPageProps {
   onBack: () => void;
 }
 
+interface PositionItem {
+  symbol: string;
+  name: string;
+  qty: number;
+  cost: string;
+  value: string;
+  pnl: string;
+  pnlPct: string;
+  isGain: boolean;
+}
+
+const defaultPositions: PositionItem[] = [
+  { symbol: 'ACN', name: 'Accenture plc', qty: 173, cost: '$170.13', value: '$32,828.48', pnl: '+$3,396.42', pnlPct: '+11.54%', isGain: true },
+  { symbol: 'MA', name: 'Mastercard Inc.', qty: 52, cost: '$579.34', value: '$30,644.12', pnl: '+$518.21', pnlPct: '+1.72%', isGain: true },
+  { symbol: 'XOM', name: 'Exxon Mobil Corp.', qty: 185, cost: '$153.50', value: '$29,802.06', pnl: '+$1,404.93', pnlPct: '+4.95%', isGain: true },
+  { symbol: 'ADBE', name: 'Adobe Inc.', qty: 4, cost: '$281.74', value: '$1,173.20', pnl: '+$46.23', pnlPct: '+4.10%', isGain: true },
+  { symbol: 'CRM', name: 'Salesforce Inc.', qty: 1, cost: '$256.02', value: '$258.40', pnl: '+$2.38', pnlPct: '+0.93%', isGain: true },
+  { symbol: 'MSFT', name: 'Microsoft Corp.', qty: 1, cost: '$509.55', value: '$507.50', pnl: '-$2.05', pnlPct: '-0.40%', isGain: false },
+  { symbol: 'MRK', name: 'Merck & Co., Inc.', qty: 4, cost: '$149.53', value: '$591.04', pnl: '-$7.09', pnlPct: '-1.19%', isGain: false }
+];
+
 const ThesisPage = ({ onBack }: ThesisPageProps) => {
-  const positions = [
-    { symbol: 'ACN', name: 'Accenture plc', qty: 173, cost: '$170.13', value: '$32,828.48', pnl: '+$3,396.42', pnlPct: '+11.54%', isGain: true },
-    { symbol: 'MA', name: 'Mastercard Inc.', qty: 52, cost: '$579.34', value: '$30,644.12', pnl: '+$518.21', pnlPct: '+1.72%', isGain: true },
-    { symbol: 'XOM', name: 'Exxon Mobil Corp.', qty: 185, cost: '$153.50', value: '$29,802.06', pnl: '+$1,404.93', pnlPct: '+4.95%', isGain: true },
-    { symbol: 'ADBE', name: 'Adobe Inc.', qty: 4, cost: '$281.74', value: '$1,173.20', pnl: '+$46.23', pnlPct: '+4.10%', isGain: true },
-    { symbol: 'CRM', name: 'Salesforce Inc.', qty: 1, cost: '$256.02', value: '$258.40', pnl: '+$2.38', pnlPct: '+0.93%', isGain: true },
-    { symbol: 'MSFT', name: 'Microsoft Corp.', qty: 1, cost: '$509.55', value: '$507.50', pnl: '-$2.05', pnlPct: '-0.40%', isGain: false },
-    { symbol: 'MRK', name: 'Merck & Co., Inc.', qty: 4, cost: '$149.53', value: '$591.04', pnl: '-$7.09', pnlPct: '-1.19%', isGain: false }
-  ];
+  const [liveEquity, setLiveEquity] = useState('$84,289.14');
+  const [liveReturn, setLiveReturn] = useState('-19.84%');
+  const [liveBuyingPower, setLiveBuyingPower] = useState('$222,192.45');
+  const [liveLongMktVal, setLiveLongMktVal] = useState('$95,803.42');
+  const [livePnl, setLivePnl] = useState('+$5,357.65');
+  const [positions, setPositions] = useState<PositionItem[]>(defaultPositions);
+  const [lastUpdated, setLastUpdated] = useState<string>('');
+
+  useEffect(() => {
+    const fetchAlpacaLive = async () => {
+      const apiKey = 'PK7CTKCFHUILHXNFV2Q3JXQRIF';
+      const apiSecret = '4KZpTxcaJyDzGDEzpnM2xbHEEqZfyWq6B86PEvT6vm5j';
+      const headers = {
+        'APCA-API-KEY-ID': apiKey,
+        'APCA-API-SECRET-KEY': apiSecret
+      };
+
+      try {
+        // 1. Fetch Account Details
+        const accRes = await fetch('https://paper-api.alpaca.markets/v2/account', { headers });
+        if (accRes.ok) {
+          const acc = await accRes.json();
+          const eq = parseFloat(acc.equity);
+          const bp = parseFloat(acc.buying_power);
+          const lmv = parseFloat(acc.long_market_value);
+          const peak = 105151.23;
+          const retPct = (((eq - peak) / peak) * 100).toFixed(2);
+
+          setLiveEquity('$' + eq.toLocaleString('en-US', { minimumFractionDigits: 2 }));
+          setLiveBuyingPower('$' + bp.toLocaleString('en-US', { minimumFractionDigits: 2 }));
+          setLiveLongMktVal('$' + lmv.toLocaleString('en-US', { minimumFractionDigits: 2 }));
+          setLiveReturn((parseFloat(retPct) >= 0 ? '+' : '') + retPct + '%');
+          setLastUpdated(new Date().toLocaleTimeString());
+        }
+
+        // 2. Fetch Open Positions
+        const posRes = await fetch('https://paper-api.alpaca.markets/v2/positions', { headers });
+        if (posRes.ok) {
+          const rawPositions = await posRes.json();
+          if (Array.isArray(rawPositions) && rawPositions.length > 0) {
+            let totalUnrealized = 0;
+            const nameMap: Record<string, string> = {
+              ACN: 'Accenture plc',
+              MA: 'Mastercard Inc.',
+              XOM: 'Exxon Mobil Corp.',
+              ADBE: 'Adobe Inc.',
+              CRM: 'Salesforce Inc.',
+              MSFT: 'Microsoft Corp.',
+              MRK: 'Merck & Co., Inc.'
+            };
+
+            const formatted: PositionItem[] = rawPositions.map((p: any) => {
+              const qty = parseFloat(p.qty);
+              const cost = parseFloat(p.avg_entry_price);
+              const val = parseFloat(p.market_value);
+              const pnl = parseFloat(p.unrealized_pl);
+              const pnlPct = parseFloat(p.unrealized_plpc) * 100;
+              totalUnrealized += pnl;
+
+              return {
+                symbol: p.symbol,
+                name: nameMap[p.symbol] || p.symbol,
+                qty: qty,
+                cost: '$' + cost.toFixed(2),
+                value: '$' + val.toLocaleString('en-US', { minimumFractionDigits: 2 }),
+                pnl: (pnl >= 0 ? '+$' : '-$') + Math.abs(pnl).toLocaleString('en-US', { minimumFractionDigits: 2 }),
+                pnlPct: (pnlPct >= 0 ? '+' : '') + pnlPct.toFixed(2) + '%',
+                isGain: pnl >= 0
+              };
+            });
+
+            setPositions(formatted);
+            setLivePnl((totalUnrealized >= 0 ? '+$' : '-$') + Math.abs(totalUnrealized).toLocaleString('en-US', { minimumFractionDigits: 2 }));
+          } else {
+            setPositions([]);
+            setLivePnl('$0.00');
+          }
+        }
+      } catch (e) {
+        console.log('Alpaca Live Stream Polling Error:', e);
+      }
+    };
+
+    fetchAlpacaLive();
+    const interval = setInterval(fetchAlpacaLive, 8000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-950 text-white font-sans pt-24 pb-20 px-4 sm:px-6 lg:px-8">
@@ -76,8 +176,8 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
               <span>CURRENT PORTFOLIO EQUITY</span>
               <Activity className="w-4 h-4 text-blue-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">$84,290.52</div>
-            <div className="text-xs text-cyan-400 font-semibold">Buying Power: $222,196.32</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono">{liveEquity}</div>
+            <div className="text-xs text-cyan-400 font-semibold">Buying Power: {liveBuyingPower}</div>
           </div>
 
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
@@ -85,7 +185,7 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
               <span>ALPACA ACCOUNT RETURN</span>
               <TrendingUp className="w-4 h-4 text-red-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-red-400 font-mono">-19.84%</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-red-400 font-mono">{liveReturn}</div>
             <div className="text-xs text-gray-400">Peak High-Water Mark: <strong className="text-emerald-400">$105,151.23</strong></div>
           </div>
 
@@ -94,8 +194,8 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
               <span>LONG PORTFOLIO VALUE</span>
               <Award className="w-4 h-4 text-yellow-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-yellow-400 font-mono">$95,804.80</div>
-            <div className="text-xs text-gray-400">7 Active Long Stock Holdings</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-yellow-400 font-mono">{liveLongMktVal}</div>
+            <div className="text-xs text-gray-400">{positions.length} Active Long Stock Holdings</div>
           </div>
 
           <div className="glass-card rounded-2xl p-6 border border-gray-800 bg-gray-900/80 shadow-lg space-y-2">
@@ -103,8 +203,10 @@ const ThesisPage = ({ onBack }: ThesisPageProps) => {
               <span>UNREALIZED HOLDINGS P&amp;L</span>
               <ShieldCheck className="w-4 h-4 text-cyan-400" />
             </div>
-            <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">+$5,358.32</div>
-            <div className="text-xs text-emerald-400 font-semibold">+5.92% Net Gain Across Holdings</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono">{livePnl}</div>
+            <div className="text-xs text-emerald-400 font-semibold">
+              {lastUpdated ? `Live Feed Active (${lastUpdated})` : '+5.92% Net Gain Across Holdings'}
+            </div>
           </div>
         </div>
 
